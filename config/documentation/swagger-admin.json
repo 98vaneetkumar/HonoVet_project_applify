@@ -1,0 +1,736 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"title": "common-library -  Resume API",
+		"description": "common-library -  Admin API Documentation",
+		"version": "1.0"
+	},
+	"produces": [
+		"application/json"
+	],
+	"basePath": "/",
+	"securityDefinitions": {
+		"Bearer": {
+			"type": "apiKey",
+			"name": "authorization",
+			"in": "header"
+		}
+	},
+	"paths": {
+		"/profile/add": {
+			"post": {
+			  "summary": "User Register",
+			  "tags": ["User Profile"],
+			  "content": ["application/json"],
+			  "parameters": [
+				{
+				  "name": "Name",
+				  "in": "formData",
+				  "description": "Enter user Name",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+				  "name": "email",
+				  "in": "formData",
+				  "description": "Enter your email",
+				  "required": false,
+				  "type": "string"
+				}
+			  ],
+	  
+			  "responses": {
+				"200": {
+				  "description": "Education add Successfull",
+				  "schema": {
+					"type": "object"
+				  }
+				},
+				"405": {
+				  "description": "Invalid input"
+				}
+			  }
+			}
+		  },
+		  "/profile/login": {
+			"post": {
+			  "summary": "User Register",
+			  "tags": ["User Profile"],
+			  "content": ["application/json"],
+			  "parameters": [
+				{
+				  "name": "email",
+				  "in": "formData",
+				  "description": "Enter user email",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+				  "name": "password",
+				  "in": "formData",
+				  "description": "Enter your password",
+				  "required": false,
+				  "type": "string"
+				}
+			  ],
+	  
+			  "responses": {
+				"200": {
+				  "description": "Education add Successfull",
+				  "schema": {
+					"type": "object"
+				  }
+				},
+				"405": {
+				  "description": "Invalid input"
+				}
+			  }
+			}
+		  },
+		  "/profile/edit_profile": {
+			"post": {
+			  "summary": "User Profile add",
+			  "tags": ["User Profile"],
+			  "content": ["application/json"],
+			  "parameters": [
+				{
+				  "name": "id",
+				  "in": "formData",
+				  "description": "Enter user id",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+				  "name": "Image",
+				  "in": "formData",
+				  "description": "Enter Image",
+				  "required": false,
+				  "type": "string"
+				},
+				{
+				  "name": "Pronouns",
+				  "in": "formData",
+				  "description": "Enter Pronouns",
+				  "enum":["He/Him","She/Her"],
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+				  "name": "Bio",
+				  "in": "formData",
+				  "description": "Enter your Bio",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+				  "name": "phoneNumberto",
+				  "in": "formData",
+				  "description": "Enter your phoneNumber",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+					"name": "dateOfBirthscore",
+					"in": "formData",
+					"description": "Enter your dateOfBirth",
+					"required": "true",
+					"type": "string"
+				  },
+				  {
+					"name": "Gender",
+					"in": "formData",
+					"description": "Enter Gender",
+					"enum":["Male","Female","Other"],
+					"required": false,
+					"type": "string"
+				  },
+				  {
+					"name": "HonorsAwards",
+					"in": "formData",
+					"description": "Enter HonorsAwards",
+					"required": "true",
+					"type": "string"
+				  },
+				  {
+					"name": "serviceDisabled",
+					"in": "formData",
+					"description": "Enter your serviceDisabled",
+					"required": "true",
+					"type": "string"
+				  },
+				  {
+					"name": "myPersonalities",
+					"in": "formData",
+					"description": "Enter your myPersonalities",
+					"required": "true",
+					"type": "string"
+				  },
+				  {
+					  "name": "currentLocation",
+					  "in": "formData",
+					  "description": "Enter your currentLocation",
+					  "required": "true",
+					  "type": "string"
+					},
+					{
+					  "name": "location",
+					  "in": "formData",
+					  "description": "Enter location",
+					  "required": false,
+					  "type": "string"
+					},
+					{
+					  "name": "zipCode",
+					  "in": "formData",
+					  "description": "Enter zipCode",
+					  "enum":["He/Him","She/Her"],
+					  "required": "true",
+					  "type": "string"
+					},
+					{
+					  "name": "document",
+					  "in": "formData",
+					  "description": "Enter your document",
+					  "required": "true",
+					  "type": "string"
+					},
+					{
+					  "name": "marriageCertificate",
+					  "in": "formData",
+					  "description": "Enter your marriageCertificate",
+					  "required": "true",
+					  "type": "string"
+					},
+					{
+						"name": "spouseName",
+						"in": "formData",
+						"description": "Enter your spouseName",
+						"required": "true",
+						"type": "string"
+					  },{
+						"name": "service",
+						"in": "formData",
+						"description": "Enter service",
+						"required": false,
+						"type": "string"
+					  },
+					  {
+						"name": "jobTitle",
+						"in": "formData",
+						"description": "Enter jobTitle",
+						"required": "true",
+						"type": "string"
+					  },
+					  {
+						"name": "servicehonorsAwards",
+						"in": "formData",
+						"description": "Enter your servicehonorsAwards",
+						"required": "true",
+						"type": "string"
+					  },
+					  {
+						"name": "vegetranServiceDisabled",
+						"in": "formData",
+						"description": "Enter your vegetranServiceDisabled",
+						"required": "true",
+						"type": "string"
+					  },
+					  {
+						  "name": "termCondition",
+						  "in": "formData",
+						  "description": "Enter your termCondition",
+						  "required": "true",
+						  "type": "string"
+						}
+			  ],
+	  
+			  "responses": {
+				"200": {
+				  "description": "Education add Successfull",
+				  "schema": {
+					"type": "object"
+				  }
+				},
+				"405": {
+				  "description": "Invalid input"
+				}
+			  }
+			}
+		  },
+		"/skill/addSkill": {
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"tags": [
+					"User"
+				],
+				"description": "Add skill of user for creation of resume",
+				"consumes": "application/json",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"schema": {
+							"properties": {
+								"userId":{
+									"type":"string",
+									"required":false
+								},
+								"Skill": {
+									"type": "array",
+									"required": true,
+									"items": {
+										"$ref": "#/definitions/Skill"
+									}
+								}
+							}
+						}
+					}
+				],
+				"responses": {}
+			}
+			
+		},
+		"/skill/getSkill/{id}": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"tags": [
+					"User"
+				],
+				"description": "Get Skills List",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "id of task",
+						"type": "string",
+						"format": "uuid",
+						"value": "",
+						"required": true
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/skill/getSkill": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"tags": [
+					"User"
+				],
+				"description": "Get Skills List",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/education/addEducation": {
+			"post": {
+			  "summary": "User Resume education add",
+			  "tags": ["Education"],
+			  "content": ["application/json"],
+			  "parameters": [
+				{
+				  "name": "userId",
+				  "in": "formData",
+				  "description": "Enter user ID",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+				  "name": "degree",
+				  "in": "formData",
+				  "description": "Enter degree or specilization detail",
+				  "required": false,
+				  "type": "string"
+				},
+				{
+				  "name": "university",
+				  "in": "formData",
+				  "description": "Enter university or institution detials",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+				  "name": "from",
+				  "in": "formData",
+				  "description": "Enter the date when you start",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+				  "name": "to",
+				  "in": "formData",
+				  "description": "Enter the date when you end",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+					"name": "score",
+					"in": "formData",
+					"description": "Enter your score",
+					"required": "true",
+					"type": "string"
+				  }
+			  ],
+	  
+			  "responses": {
+				"200": {
+				  "description": "Education add Successfull",
+				  "schema": {
+					"type": "object"
+				  }
+				},
+				"405": {
+				  "description": "Invalid input"
+				}
+			  }
+			}
+		  },
+		"/education/getEducation": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"tags": [
+					"Education"
+				],
+				"description": "Get education List",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"responses": {}
+			}
+		},
+	    "/education/editEducation": {
+			"put": {
+			  "summary": "User Resume education edit",
+			  "tags": ["Education"],
+			  "content": ["application/json"],
+			  "parameters": [
+				{
+				  "name": "id",
+				  "in": "formData",
+				  "description": "Enter education ID",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+				  "name": "degree",
+				  "in": "formData",
+				  "description": "Enter degree or specilization detail",
+				  "required": false,
+				  "type": "string"
+				},
+				{
+				  "name": "university",
+				  "in": "formData",
+				  "description": "Enter university or institution detials",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+				  "name": "from",
+				  "in": "formData",
+				  "description": "Enter the date when you start",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+				  "name": "to",
+				  "in": "formData",
+				  "description": "Enter the date when you end",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+					"name": "score",
+					"in": "formData",
+					"description": "Enter your score",
+					"required": "true",
+					"type": "string"
+				  }
+			  ],
+	  
+			  "responses": {
+				"200": {
+				  "description": "Education edit Successfull",
+				  "schema": {
+					"type": "object"
+				  }
+				},
+				"405": {
+				  "description": "Invalid input"
+				}
+			  }
+			}
+		  },
+		 "/education/deleteEducation": {
+			"put": {
+			  "summary": "User Resume education deleted",
+			  "tags": ["Education"],
+			  "content": ["application/json"],
+			  "parameters": [
+				{
+				  "name": "id",
+				  "in": "formData",
+				  "description": "Enter education ID",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+					"name": "isDeleted",
+					"in": "formData",
+					"description": "Enter isDeleted value",
+					"enum":[0,1],
+					"required": "true",
+					"type": "integer"
+				  }
+				
+			  ],
+	  
+			  "responses": {
+				"200": {
+				  "description": "Education deleted Successfull",
+				  "schema": {
+					"type": "object"
+				  }
+				},
+				"405": {
+				  "description": "Invalid input"
+				}
+			  }
+			}
+		  },
+		  "/experience/addExperience": {
+			"post": {
+			  "summary": "User Work Experience add",
+			  "tags": ["Work Experience"],
+			  "content": ["application/json"],
+			  "parameters": [
+				{
+				  "name": "userId",
+				  "in": "formData",
+				  "description": "Enter user ID",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+				  "name": "jobTitle",
+				  "in": "formData",
+				  "description": "Enter job Title detail",
+				  "required": false,
+				  "type": "string"
+				},
+				{
+				  "name": "company",
+				  "in": "formData",
+				  "description": "Enter company detials",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+					"name": "location",
+					"in": "formData",
+					"description": "Enter your location",
+					"required": "true",
+					"type": "string"
+				  },
+				{
+				  "name": "from",
+				  "in": "formData",
+				  "description": "Enter the date when you start",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+				  "name": "to",
+				  "in": "formData",
+				  "description": "Enter the date when you end",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+					"name": "employmentType",
+					"in": "formData",
+					"description": "Enter your employmentType",
+					"enum":["Full_time","Part_time","Contractual","Seasonal"],
+					"required": "true",
+					"type": "string"
+				  },
+				  {
+					"name": "jobDescription",
+					"in": "formData",
+					"description": "Enter your job Description",
+					"required": "true",
+					"type": "string"
+				  }
+			  ],
+	  
+			  "responses": {
+				"200": {
+				  "description": "Education add Successfull",
+				  "schema": {
+					"type": "object"
+				  }
+				},
+				"405": {
+				  "description": "Invalid input"
+				}
+			  }
+			}
+		  },
+		"/experince/getExperience": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"tags": [
+					"Work Experience"
+				],
+				"description": "Get education List",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"responses": {}
+			}
+		},
+	    "/experience/editExperience": {
+			"put": {
+			  "summary": "User Work Experience edit",
+			  "tags": ["Work Experience"],
+			  "content": ["application/json"],
+			  "parameters": [
+				{
+				  "name": "id",
+				  "in": "formData",
+				  "description": "Enter education ID",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+					"name": "jobTitle",
+					"in": "formData",
+					"description": "Enter job Title detail",
+					"required": false,
+					"type": "string"
+				  },
+				  {
+					"name": "company",
+					"in": "formData",
+					"description": "Enter company detials",
+					"required": "true",
+					"type": "string"
+				  },
+				  {
+					"name": "location",
+					"in": "formData",
+					"description": "Enter your location",
+					"required": "true",
+					"type": "string"
+				  },
+				  {
+					"name": "from",
+					"in": "formData",
+					"description": "Enter the date when you start",
+					"required": "true",
+					"type": "string"
+				  },
+				  {
+					"name": "to",
+					"in": "formData",
+					"description": "Enter the date when you end",
+					"required": "true",
+					"type": "string"
+				  },
+				  {
+					  "name": "employmentType",
+					  "in": "formData",
+					  "description": "Enter your employmentType",
+					  "required": "true",
+					  "type": "string"
+					},
+					{
+					  "name": "jobDescription",
+					  "in": "formData",
+					  "description": "Enter your job Description",
+					  "required": "true",
+					  "type": "string"
+					}
+			  ],
+	  
+			  "responses": {
+				"200": {
+				  "description": "Education edit Successfull",
+				  "schema": {
+					"type": "object"
+				  }
+				},
+				"405": {
+				  "description": "Invalid input"
+				}
+			  }
+			}
+		  },
+		 "/experience/deleteExperience": {
+			"put": {
+			  "summary": "User Work Experience deleted",
+			  "tags": ["Work Experience"],
+			  "content": ["application/json"],
+			  "parameters": [
+				{
+				  "name": "id",
+				  "in": "formData",
+				  "description": "Enter education ID",
+				  "required": "true",
+				  "type": "string"
+				},
+				{
+					"name": "isDeleted",
+					"in": "formData",
+					"description": "Enter isDeleted value",
+					"enum":[0,1],
+					"required": "true",
+					"type": "integer"
+				  }
+				
+			  ],
+	  
+			  "responses": {
+				"200": {
+				  "description": "Education deleted Successfull",
+				  "schema": {
+					"type": "object"
+				  }
+				},
+				"405": {
+				  "description": "Invalid input"
+				}
+			  }
+			}
+		  }
+	},
+	"definitions": {
+		"skill": {
+			"type": "array",
+			"properties": {
+				"Skill": {
+					"type": "array"
+				} 
+			}
+        }
+	}
+}
