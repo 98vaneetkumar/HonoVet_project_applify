@@ -13,8 +13,8 @@ var setTokenInDBAdmin = async (userId, token) => {
 		adminId: userId,
 	};
 	// await Service.adminSessionServices.deleteSessions(condition);
-	let createSession = await Service.adminSessionServices.saveSessionData(dataToSave);
-	if (!createSession) throw Response.error_msg.implementationError;
+	// let createSession = await Service.adminSessionServices.saveSessionData(dataToSave);
+	// if (!createSession) throw Response.error_msg.implementationError;
 };
 var expireTokenInDBAdmin = async (userId) => {
 	let condition = {

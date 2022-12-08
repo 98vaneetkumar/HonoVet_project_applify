@@ -81,7 +81,8 @@ app.use((req, res, next) => {
 
 app.listen(PORT, function (err) {
   if (err) console.log("Error in server setup");
-  console.log("Server listening on Port", PORT);
+  // console.log("Server listening on Port", PORT);
+  console.log(`http://localhost:${PORT}`, PORT);
 });
 app.use((req, res, next) => {
   var err = new Error("Not Found");

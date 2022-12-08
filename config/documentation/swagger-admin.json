@@ -63,14 +63,16 @@
 				  "in": "formData",
 				  "description": "Enter user email",
 				  "required": "true",
-				  "type": "string"
+				  "type": "string",
+				  "value":"vaneet3157@gmail.com"
 				},
 				{
 				  "name": "password",
 				  "in": "formData",
 				  "description": "Enter your password",
 				  "required": false,
-				  "type": "string"
+				  "type": "string",
+				  "value":"123456"
 				}
 			  ],
 	  
@@ -88,7 +90,7 @@
 			}
 		  },
 		  "/profile/edit_profile": {
-			"post": {
+			"put": {
 			  "summary": "User Profile add",
 			  "tags": ["User Profile"],
 			  "content": ["application/json"],
@@ -98,20 +100,22 @@
 				  "in": "formData",
 				  "description": "Enter user id",
 				  "required": "true",
-				  "type": "string"
+				  "type": "string",
+				  "value":"80d874f6-c488-4b1c-bb1a-946297a542a2"
 				},
 				{
 				  "name": "Image",
 				  "in": "formData",
 				  "description": "Enter Image",
-				  "required": false,
-				  "type": "string"
+				  "required": true,
+				  "type": "string",
+				  "value":"img.png"
 				},
 				{
 				  "name": "Pronouns",
 				  "in": "formData",
 				  "description": "Enter Pronouns",
-				  "enum":["He/Him","She/Her"],
+				  "enum":["He / Him","She / Her", "They / Them", "Add Custom"],
 				  "required": "true",
 				  "type": "string"
 				},
@@ -120,28 +124,31 @@
 				  "in": "formData",
 				  "description": "Enter your Bio",
 				  "required": "true",
-				  "type": "string"
+				  "type": "string",
+				  "value":"My bio"
 				},
 				{
-				  "name": "phoneNumberto",
+				  "name": "phoneNumber",
 				  "in": "formData",
 				  "description": "Enter your phoneNumber",
 				  "required": "true",
-				  "type": "string"
+				  "type": "string",
+				  "value":"123456789"
 				},
 				{
-					"name": "dateOfBirthscore",
+					"name": "dateOfBirth",
 					"in": "formData",
 					"description": "Enter your dateOfBirth",
 					"required": "true",
-					"type": "string"
+					"type": "string",
+					"value":"1998-01-26"
 				  },
 				  {
 					"name": "Gender",
 					"in": "formData",
 					"description": "Enter Gender",
 					"enum":["Male","Female","Other"],
-					"required": false,
+					"required": true,
 					"type": "string"
 				  },
 				  {
@@ -149,98 +156,111 @@
 					"in": "formData",
 					"description": "Enter HonorsAwards",
 					"required": "true",
-					"type": "string"
+					"type": "string",
+					"value":"None"
 				  },
 				  {
 					"name": "serviceDisabled",
 					"in": "formData",
 					"description": "Enter your serviceDisabled",
+					"enum":[0,1],
 					"required": "true",
-					"type": "string"
+					"type": "integer"
 				  },
 				  {
 					"name": "myPersonalities",
 					"in": "formData",
-					"description": "Enter your myPersonalities",
+					"description": "Enter your Personalities",
 					"required": "true",
-					"type": "string"
+					"type": "string",
+					"value":"person"
 				  },
 				  {
 					  "name": "currentLocation",
 					  "in": "formData",
 					  "description": "Enter your currentLocation",
 					  "required": "true",
-					  "type": "string"
+					  "type": "string",
+					  "value":"Applify Mohali"
 					},
 					{
 					  "name": "location",
 					  "in": "formData",
 					  "description": "Enter location",
-					  "required": false,
-					  "type": "string"
+					  "required": true,
+					  "type": "string",
+					  "value":"Mohali"
 					},
 					{
 					  "name": "zipCode",
 					  "in": "formData",
 					  "description": "Enter zipCode",
-					  "enum":["He/Him","She/Her"],
 					  "required": "true",
-					  "type": "string"
+					  "type": "integer",
+					  "value":"123456"
 					},
 					{
 					  "name": "document",
 					  "in": "formData",
 					  "description": "Enter your document",
 					  "required": "true",
-					  "type": "string"
+					  "type": "string",
+					  "value":"doc.zip"
 					},
 					{
 					  "name": "marriageCertificate",
 					  "in": "formData",
 					  "description": "Enter your marriageCertificate",
 					  "required": "true",
-					  "type": "string"
+					  "type": "string",
+					  "value":"None"
 					},
 					{
 						"name": "spouseName",
 						"in": "formData",
 						"description": "Enter your spouseName",
 						"required": "true",
-						"type": "string"
+						"type": "string",
+						"value":"Applify"
 					  },{
 						"name": "service",
 						"in": "formData",
 						"description": "Enter service",
-						"required": false,
-						"type": "string"
+						"required": true,
+						"type": "string",
+						"value":"None"
 					  },
 					  {
 						"name": "jobTitle",
 						"in": "formData",
 						"description": "Enter jobTitle",
 						"required": "true",
-						"type": "string"
+						"type": "string",
+						"value":"Full-Stack"
 					  },
 					  {
 						"name": "servicehonorsAwards",
 						"in": "formData",
 						"description": "Enter your servicehonorsAwards",
 						"required": "true",
-						"type": "string"
+						"type": "string",
+						"value":"None"
 					  },
 					  {
 						"name": "vegetranServiceDisabled",
 						"in": "formData",
 						"description": "Enter your vegetranServiceDisabled",
 						"required": "true",
-						"type": "string"
+						"enum":[0,1],
+						"type": "integer"
 					  },
 					  {
 						  "name": "termCondition",
 						  "in": "formData",
 						  "description": "Enter your termCondition",
+						  "enum":[0,1],
 						  "required": "true",
-						  "type": "string"
+						  "type": "number"
 						}
 			  ],
 	  

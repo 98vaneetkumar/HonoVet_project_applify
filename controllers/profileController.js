@@ -91,7 +91,7 @@ module.exports = {
       Image: Joi.string().optional(),
       Pronouns: Joi.string().optional(),
       Bio: Joi.string().optional(),
-      phoneNumber: Joi.number().optional(),
+      phoneNumber: Joi.string().optional(),
       dateOfBirth: Joi.string().optional(),
       Gender: Joi.string().optional(),
       HonorsAwards: Joi.string().optional(),

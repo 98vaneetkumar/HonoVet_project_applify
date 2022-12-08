@@ -49,7 +49,7 @@ module.exports = function (Sequelize, sequelize, DataTypes) {
         defaultValue: null,
       },
       dateOfBirth: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         field: "dateOfBirth",
       },
       Gender: {
@@ -94,12 +94,10 @@ module.exports = function (Sequelize, sequelize, DataTypes) {
         defaultValue: null,
       },
       service: {
-        type: DataTypes.ENUM,
-        values: appConstants.APP_CONSTANTS.SERVICE,
+        type: DataTypes.STRING,
       },
       jobTitle: {
-        type: DataTypes.ENUM,
-        values: appConstants.APP_CONSTANTS.SERVICE,
+        type: DataTypes.STRING,
       },
       servicehonorsAwards: {
         type: DataTypes.STRING(40),

@@ -23,7 +23,7 @@ module.exports = function (Sequelize, sequelize, DataTypes) {
 			defaultValue: DataTypes.NOW(0),
 		},
         employmentType: {
-			type: DataTypes.ENUM,
+			type: DataTypes.STRING,
 			values: appConstants.APP_CONSTANTS.EMPLOYMENT_TYPE
 		},
         jobDescription: {
