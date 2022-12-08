@@ -1,42 +1,42 @@
 var express = require("express");
 var router = express.Router();
 const sendResponse = require("../Helper/sendResponse");
-const educationController = require("../controllers/educationController");
+const projectUnderTaken = require("../controllers/projectUnderTakenController");
 // const authentication = require("../middleWares/authentication").verifyToken;
 const authentication =
   require("../middleWares/adminAuthentication").verifyToken;
 
-router.post("/addEducation", (req, res) => {
+router.post("/addProjectUnderTaken", (req, res) => {
   let payload = req.body;
   return sendResponse.executeMethod(
-    educationController.addEducation,
+    projectUnderTaken.addProject,
     payload,
     req,
     res
   );
 });
 
-router.get("/getEducation",(req, res) => {
+router.get("/getProjectUnderTaken",(req, res) => {
 	let payload = req.body
-	return sendResponse.executeMethod(educationController.getEducationAll, payload, req, res);
+	return sendResponse.executeMethod(projectUnderTaken.getProjectAll, payload, req, res);
 });
 
-router.put("/editEducation", (req, res) => {
+router.put("/editProjectUnderTaken", (req, res) => {
   let payload = req.body;
 
   return sendResponse.executeMethod(
-    educationController.editEducation,
+    projectUnderTaken.editProject,
     payload,
     req,
     res
   );
 });
 
-router.delete("/deleteEducation", (req, res) => {
+router.delete("/deleteProjectUnderTaken", (req, res) => {
     let payload = req.body;
   
     return sendResponse.executeMethod(
-      educationController.editEducation,
+      projectUnderTaken.editProject,
       payload,
       req,
       res

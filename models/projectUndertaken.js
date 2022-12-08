@@ -14,11 +14,11 @@ module.exports = function (Sequelize, sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-        date_from: {
+        from: {
             type: DataTypes.DATE,
 			defaultValue: DataTypes.NOW(0),
 		},
-        date_to: {
+        to: {
             type: DataTypes.DATE,
 			defaultValue: DataTypes.NOW(0),
 		},

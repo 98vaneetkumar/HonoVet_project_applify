@@ -11,7 +11,8 @@ module.exports = function (Sequelize, sequelize, DataTypes) {
 			values: appConstants.APP_CONSTANTS.PROFICIENCY_TYPE
 		},
 		userId: {
-            type: DataTypes.UUID, allowNull:false,
+            type: DataTypes.UUID,
+		    allowNull:false,
             references: {
               model: "profile",
               key: "id",

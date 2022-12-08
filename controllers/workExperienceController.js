@@ -32,9 +32,8 @@ module.exports = {
     if (_.has(payload, "from") && payload.from != "") objToSave.from = payload.from;
     if (_.has(payload, "to") && payload.to != "") objToSave.to = payload.to;
     if (_.has(payload, "employmentType") && payload.employmentType != "") objToSave.employmentType = payload.employmentType;
-    if (_.has(payload, "isDeleted") && payload.isDeleted != "") objToSave.isDeleted = payload.isDeleted;
     if (_.has(payload, "jobDescription") && payload.jobDescription != "") objToSave.jobDescription = payload.jobDescription;
-    
+    if (_.has(payload, "isDeleted") && payload.isDeleted != "") objToSave.isDeleted = payload.isDeleted;
     let addProfile = await Service.workExperienceService.saveData(objToSave);
     if (addProfile) {
       return message.success.ADDED;

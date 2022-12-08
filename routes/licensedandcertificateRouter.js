@@ -1,42 +1,42 @@
 var express = require("express");
 var router = express.Router();
 const sendResponse = require("../Helper/sendResponse");
-const educationController = require("../controllers/educationController");
+const awardandhonorsController = require("../controllers/awardandhonorsController");
 // const authentication = require("../middleWares/authentication").verifyToken;
 const authentication =
   require("../middleWares/adminAuthentication").verifyToken;
 
-router.post("/addEducation", (req, res) => {
+router.post("/addcertification", (req, res) => {
   let payload = req.body;
   return sendResponse.executeMethod(
-    educationController.addEducation,
+   awardandhonorsController.addcertification,
     payload,
     req,
     res
   );
 });
 
-router.get("/getEducation",(req, res) => {
+router.get("/getcertification",(req, res) => {
 	let payload = req.body
-	return sendResponse.executeMethod(educationController.getEducationAll, payload, req, res);
+	return sendResponse.executeMethod(awardandhonorsController.getcertificationAll, payload, req, res);
 });
 
-router.put("/editEducation", (req, res) => {
+router.put("/editcertification", (req, res) => {
   let payload = req.body;
 
   return sendResponse.executeMethod(
-    educationController.editEducation,
+   awardandhonorsController.editcertification,
     payload,
     req,
     res
   );
 });
 
-router.delete("/deleteEducation", (req, res) => {
+router.delete("/deletecertification", (req, res) => {
     let payload = req.body;
   
     return sendResponse.executeMethod(
-      educationController.editEducation,
+     awardandhonorsController.editcertification,
       payload,
       req,
       res

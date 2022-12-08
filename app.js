@@ -13,6 +13,11 @@ var profileRoute = require("./routes/profileRoutes");
 var skill = require("./routes/skillRoutes");
 var education=require("./routes/educationRouter");
 var workExperience=require("./routes/workExperienceRouter")
+var volunteerExperience=require("./routes/volunteerExperRouter")
+var awardandhonour=require("./routes/awardandhonorsRouter")
+var certificate=require("./routes/licensedandcertificateRouter")
+var language=require("./routes/languageRouter")
+var projectundertaken=require("./routes/projectUnderTakenRouter")
 
 var __dirname = path.resolve();
 var app = express();
@@ -70,6 +75,12 @@ app.use("/profile", profileRoute);
 app.use("/skill", skill);
 app.use("/education", education);
 app.use("/experience", workExperience);
+app.use("/volunteerExperience", volunteerExperience);
+app.use("/awardandhonour", awardandhonour);
+app.use("/certificate",certificate)
+app.use("/language",language)
+app.use("/projectUnderTaken",projectundertaken)
+
 
 require("./dbConnection").connectDB();
 app.use((req, res, next) => {

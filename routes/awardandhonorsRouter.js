@@ -1,42 +1,42 @@
 var express = require("express");
 var router = express.Router();
 const sendResponse = require("../Helper/sendResponse");
-const educationController = require("../controllers/educationController");
+const licenceandcertificateController = require("../controllers/licenceandcertificateController");
 // const authentication = require("../middleWares/authentication").verifyToken;
 const authentication =
   require("../middleWares/adminAuthentication").verifyToken;
 
-router.post("/addEducation", (req, res) => {
+router.post("/addawadho", (req, res) => {
   let payload = req.body;
   return sendResponse.executeMethod(
-    educationController.addEducation,
+   licenceandcertificateController.addawadho,
     payload,
     req,
     res
   );
 });
 
-router.get("/getEducation",(req, res) => {
+router.get("/getawadho",(req, res) => {
 	let payload = req.body
-	return sendResponse.executeMethod(educationController.getEducationAll, payload, req, res);
+	return sendResponse.executeMethod(licenceandcertificateController.getawadhoAll, payload, req, res);
 });
 
-router.put("/editEducation", (req, res) => {
+router.put("/editawadho", (req, res) => {
   let payload = req.body;
 
   return sendResponse.executeMethod(
-    educationController.editEducation,
+   licenceandcertificateController.editawadho,
     payload,
     req,
     res
   );
 });
 
-router.delete("/deleteEducation", (req, res) => {
+router.delete("/deleteawadho", (req, res) => {
     let payload = req.body;
   
     return sendResponse.executeMethod(
-      educationController.editEducation,
+     licenceandcertificateController.editawadho,
       payload,
       req,
       res

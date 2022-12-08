@@ -32,7 +32,7 @@ router.put("/editExperience", (req, res) => {
   );
 });
 
-router.put("/deleteExperience", (req, res) => {
+router.delete("/deleteExperience", (req, res) => {
     let payload = req.body;
   
     return sendResponse.executeMethod(
