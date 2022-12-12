@@ -1,1710 +1,2124 @@
 {
-	"swagger": "2.0",
-	"info": {
-		"title": "honorVet Project - API",
-		"description": "honorVet Project -  Admin API Documentation",
-		"version": "1.0"
-	},
-	"produces": [
-		"application/json"
-	],
-	"basePath": "/",
-	"securityDefinitions": {
-		"Bearer": {
-			"type": "apiKey",
-			"name": "authorization",
-			"in": "header"
-		}
-	},
-	"paths": {
-		"/profile/add": {
-			"post": {
-			  "summary": "User Register",
-			  "tags": ["User Profile"],
-			  "content": ["application/json"],
-			  "parameters": [
-				{
-				  "name": "Name",
-				  "in": "formData",
-				  "description": "Enter user Name",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-				  "name": "email",
-				  "in": "formData",
-				  "description": "Enter your email",
-				  "required": false,
-				  "type": "string"
-				}
-			  ],
-	  
-			  "responses": {
-				"200": {
-				  "description": "Education add Successfull",
-				  "schema": {
-					"type": "object"
-				  }
-				},
-				"405": {
-				  "description": "Invalid input"
-				}
-			  }
-			}
-		  },
-		  "/profile/login": {
-			"post": {
-			  "summary": "User Register",
-			  "tags": ["User Profile"],
-			  "content": ["application/json"],
-			  "parameters": [
-				{
-				  "name": "email",
-				  "in": "formData",
-				  "description": "Enter user email",
-				  "required": "true",
-				  "type": "string",
-				  "value":"vaneet3157@gmail.com"
-				},
-				{
-				  "name": "password",
-				  "in": "formData",
-				  "description": "Enter your password",
-				  "required": false,
-				  "type": "string",
-				  "value":"123456"
-				}
-			  ],
-	  
-			  "responses": {
-				"200": {
-				  "description": "Education add Successfull",
-				  "schema": {
-					"type": "object"
-				  }
-				},
-				"405": {
-				  "description": "Invalid input"
-				}
-			  }
-			}
-		  },
-		  "/profile/edit_profile": {
-			"put": {
-			  "summary": "User Profile add",
-			  "tags": ["User Profile"],
-			  "content": ["application/json"],
-			  "parameters": [
-				{
-				  "name": "id",
-				  "in": "formData",
-				  "description": "Enter user id",
-				  "required": "true",
-				  "type": "string",
-				  "value":"80d874f6-c488-4b1c-bb1a-946297a542a2"
-				},
-				{
-				  "name": "Image",
-				  "in": "formData",
-				  "description": "Enter Image",
-				  "required": true,
-				  "type": "string",
-				  "value":"img.png"
-				},
-				{
-				  "name": "Pronouns",
-				  "in": "formData",
-				  "description": "Enter Pronouns",
-				  "enum":["He / Him","She / Her", "They / Them", "Add Custom"],
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-				  "name": "Bio",
-				  "in": "formData",
-				  "description": "Enter your Bio",
-				  "required": "true",
-				  "type": "string",
-				  "value":"My bio"
-				},
-				{
-				  "name": "phoneNumber",
-				  "in": "formData",
-				  "description": "Enter your phoneNumber",
-				  "required": "true",
-				  "type": "string",
-				  "value":"123456789"
-				},
-				{
-					"name": "dateOfBirth",
-					"in": "formData",
-					"description": "Enter your dateOfBirth",
-					"required": "true",
-					"type": "string",
-					"value":"1998-01-26"
-				  },
-				  {
-					"name": "Gender",
-					"in": "formData",
-					"description": "Enter Gender",
-					"enum":["Male","Female","Other"],
-					"required": true,
-					"type": "string"
-				  },
-				  {
-					"name": "HonorsAwards",
-					"in": "formData",
-					"description": "Enter HonorsAwards",
-					"required": "true",
-					"type": "string",
-					"value":"None"
-				  },
-				  {
-					"name": "serviceDisabled",
-					"in": "formData",
-					"description": "Enter your serviceDisabled",
-					"enum":[0,1],
-					"required": "true",
-					"type": "integer"
-				  },
-				  {
-					"name": "myPersonalities",
-					"in": "formData",
-					"description": "Enter your Personalities",
-					"required": "true",
-					"type": "string",
-					"value":"person"
-				  },
-				  {
-					  "name": "currentLocation",
-					  "in": "formData",
-					  "description": "Enter your currentLocation",
-					  "required": "true",
-					  "type": "string",
-					  "value":"Applify Mohali"
-					},
-					{
-					  "name": "location",
-					  "in": "formData",
-					  "description": "Enter location",
-					  "required": true,
-					  "type": "string",
-					  "value":"Mohali"
-					},
-					{
-					  "name": "zipCode",
-					  "in": "formData",
-					  "description": "Enter zipCode",
-					  "required": "true",
-					  "type": "integer",
-					  "value":"123456"
-					},
-					{
-					  "name": "document",
-					  "in": "formData",
-					  "description": "Enter your document",
-					  "required": "true",
-					  "type": "string",
-					  "value":"doc.zip"
-					},
-					{
-					  "name": "marriageCertificate",
-					  "in": "formData",
-					  "description": "Enter your marriageCertificate",
-					  "required": "true",
-					  "type": "string",
-					  "value":"None"
-					},
-					{
-						"name": "spouseName",
-						"in": "formData",
-						"description": "Enter your spouseName",
-						"required": "true",
-						"type": "string",
-						"value":"Applify"
-					  },{
-						"name": "service",
-						"in": "formData",
-						"description": "Enter service",
-						"required": true,
-						"type": "string",
-						"value":"None"
-					  },
-					  {
-						"name": "jobTitle",
-						"in": "formData",
-						"description": "Enter jobTitle",
-						"required": "true",
-						"type": "string",
-						"value":"Full-Stack"
-					  },
-					  {
-						"name": "servicehonorsAwards",
-						"in": "formData",
-						"description": "Enter your servicehonorsAwards",
-						"required": "true",
-						"type": "string",
-						"value":"None"
-					  },
-					  {
-						"name": "vegetranServiceDisabled",
-						"in": "formData",
-						"description": "Enter your vegetranServiceDisabled",
-						"required": "true",
-						"enum":[0,1],
-						"type": "integer"
-					  },
-					  {
-						  "name": "termCondition",
-						  "in": "formData",
-						  "description": "Enter your termCondition",
-						  "enum":[0,1],
-						  "required": "true",
-						  "type": "number"
-						}
-			  ],
-	  
-			  "responses": {
-				"200": {
-				  "description": "Education add Successfull",
-				  "schema": {
-					"type": "object"
-				  }
-				},
-				"405": {
-				  "description": "Invalid input"
-				}
-			  }
-			}
-		  },
-		"/skill/addSkill": {
-			"post": {
-				"x-swagger-router-controller": "middleware-name1",
-				
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
-				"tags": [
-					"User Skill"
-				],
-				"description": "Add skill of user for creation of resume",
-				"consumes": "application/json",
-				"parameters": [
-					{
-						"name": "body",
-						"in": "body",
-						"schema": {
-							"properties": {
-								"userId":{
-									"type":"string",
-									"required":false
-								},
-								"Skill": {
-									"type": "array",
-									"required": true,
-									"items": {
-										"$ref": "#/definitions/Skill"
-									}
-								}
-							}
-						}
-					}
-				],
-				"responses": {}
-			}
-			
-		},
-		"/skill/getSkill/{id}": {
-			"get": {
-				"x-swagger-router-controller": "middleware-name1",
-				"tags": [
-					"User Skill"
-				],
-				"description": "Get Skills List",
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
-				"parameters": [
-					{
-						"name": "id",
-						"in": "path",
-						"description": "id of task",
-						"type": "string",
-						"format": "uuid",
-						"value": "",
-						"required": true
-					}
-				],
-				"responses": {}
-			}
-		},
-		"/skill/getSkill": {
-			"get": {
-				"x-swagger-router-controller": "middleware-name1",
-				"tags": [
-					"User Skill"
-				],
-				"description": "Get Skills List",
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
-				"responses": {}
-			}
-		},
-		"/education/addEducation": {
-			"post": {
-			  "summary": "User Resume education add",
-			  "tags": ["Education"],
-			  "content": ["application/json"],
-			  "parameters": [
-				{
-				  "name": "userId",
-				  "in": "formData",
-				  "description": "Enter user ID",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-				  "name": "degree",
-				  "in": "formData",
-				  "description": "Enter degree or specilization detail",
-				  "required": false,
-				  "type": "string"
-				},
-				{
-				  "name": "university",
-				  "in": "formData",
-				  "description": "Enter university or institution detials",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-				  "name": "from",
-				  "in": "formData",
-				  "description": "Enter the date when you start",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-				  "name": "to",
-				  "in": "formData",
-				  "description": "Enter the date when you end",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-					"name": "score",
-					"in": "formData",
-					"description": "Enter your score",
-					"required": "true",
-					"type": "string"
-				  }
-			  ],
-	  
-			  "responses": {
-				"200": {
-				  "description": "Education add Successfull",
-				  "schema": {
-					"type": "object"
-				  }
-				},
-				"405": {
-				  "description": "Invalid input"
-				}
-			  }
-			}
-		  },
-		"/education/getEducation": {
-			"get": {
-				"x-swagger-router-controller": "middleware-name1",
-				"tags": [
-					"Education"
-				],
-				"description": "Get education List",
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
-				"responses": {}
-			}
-		},
-	    "/education/editEducation": {
-			"put": {
-			  "summary": "User Resume education edit",
-			  "tags": ["Education"],
-			  "content": ["application/json"],
-			  "parameters": [
-				{
-				  "name": "id",
-				  "in": "formData",
-				  "description": "Enter education ID",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-				  "name": "degree",
-				  "in": "formData",
-				  "description": "Enter degree or specilization detail",
-				  "required": false,
-				  "type": "string"
-				},
-				{
-				  "name": "university",
-				  "in": "formData",
-				  "description": "Enter university or institution detials",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-				  "name": "from",
-				  "in": "formData",
-				  "description": "Enter the date when you start",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-				  "name": "to",
-				  "in": "formData",
-				  "description": "Enter the date when you end",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-					"name": "score",
-					"in": "formData",
-					"description": "Enter your score",
-					"required": "true",
-					"type": "string"
-				  }
-			  ],
-	  
-			  "responses": {
-				"200": {
-				  "description": "Education edit Successfull",
-				  "schema": {
-					"type": "object"
-				  }
-				},
-				"405": {
-				  "description": "Invalid input"
-				}
-			  }
-			}
-		  },
-		 "/education/deleteEducation": {
-			"delete": {
-			  "summary": "User Resume education deleted",
-			  "tags": ["Education"],
-			  "content": ["application/json"],
-			  "parameters": [
-				{
-				  "name": "id",
-				  "in": "formData",
-				  "description": "Enter education ID",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-					"name": "isDeleted",
-					"in": "formData",
-					"description": "Enter isDeleted value",
-					"enum":[0,1],
-					"required": "true",
-					"type": "integer"
-				  }
-				
-			  ],
-	  
-			  "responses": {
-				"200": {
-				  "description": "Education deleted Successfull",
-				  "schema": {
-					"type": "object"
-				  }
-				},
-				"405": {
-				  "description": "Invalid input"
-				}
-			  }
-			}
-		  },
-		  "/experience/addExperience": {
-			"post": {
-			  "summary": "User Work Experience add",
-			  "tags": ["Work Experience"],
-			  "content": ["application/json"],
-			  "parameters": [
-				{
-				  "name": "userId",
-				  "in": "formData",
-				  "description": "Enter user ID",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-				  "name": "jobTitle",
-				  "in": "formData",
-				  "description": "Enter job Title detail",
-				  "required": false,
-				  "type": "string"
-				},
-				{
-				  "name": "company",
-				  "in": "formData",
-				  "description": "Enter company detials",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-					"name": "location",
-					"in": "formData",
-					"description": "Enter your location",
-					"required": "true",
-					"type": "string"
-				  },
-				{
-				  "name": "from",
-				  "in": "formData",
-				  "description": "Enter the date when you start",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-				  "name": "to",
-				  "in": "formData",
-				  "description": "Enter the date when you end",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-					"name": "employmentType",
-					"in": "formData",
-					"description": "Enter your employmentType",
-					"enum":["Full_time","Part_time","Contractual","Seasonal"],
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					"name": "jobDescription",
-					"in": "formData",
-					"description": "Enter your job Description",
-					"required": "true",
-					"type": "string"
-				  }
-			  ],
-	  
-			  "responses": {
-				"200": {
-				  "description": "Education add Successfull",
-				  "schema": {
-					"type": "object"
-				  }
-				},
-				"405": {
-				  "description": "Invalid input"
-				}
-			  }
-			}
-		  },
-		"/experince/getExperience": {
-			"get": {
-				"x-swagger-router-controller": "middleware-name1",
-				"tags": [
-					"Work Experience"
-				],
-				"description": "Get education List",
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
-				"responses": {}
-			}
-		},
-	    "/experience/editExperience": {
-			"put": {
-			  "summary": "User Work Experience edit",
-			  "tags": ["Work Experience"],
-			  "content": ["application/json"],
-			  "parameters": [
-				{
-				  "name": "id",
-				  "in": "formData",
-				  "description": "Enter Work Experience ID",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-					"name": "jobTitle",
-					"in": "formData",
-					"description": "Enter job Title detail",
-					"required": false,
-					"type": "string"
-				  },
-				  {
-					"name": "company",
-					"in": "formData",
-					"description": "Enter company detials",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					"name": "location",
-					"in": "formData",
-					"description": "Enter your location",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					"name": "from",
-					"in": "formData",
-					"description": "Enter the date when you start",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					"name": "to",
-					"in": "formData",
-					"description": "Enter the date when you end",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					  "name": "employmentType",
-					  "in": "formData",
-					  "description": "Enter your employmentType",
-					  "required": "true",
-					  "type": "string"
-					},
-					{
-					  "name": "jobDescription",
-					  "in": "formData",
-					  "description": "Enter your job Description",
-					  "required": "true",
-					  "type": "string"
-					}
-			  ],
-	  
-			  "responses": {
-				"200": {
-				  "description": "Education edit Successfull",
-				  "schema": {
-					"type": "object"
-				  }
-				},
-				"405": {
-				  "description": "Invalid input"
-				}
-			  }
-			}
-		  },
-		 "/experience/deleteExperience": {
-			"delete": {
-			  "summary": "User Work Experience deleted",
-			  "tags": ["Work Experience"],
-			  "content": ["application/json"],
-			  "parameters": [
-				{
-				  "name": "id",
-				  "in": "formData",
-				  "description": "Enter education ID",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-					"name": "isDeleted",
-					"in": "formData",
-					"description": "Enter isDeleted value",
-					"enum":[0,1],
-					"required": "true",
-					"type": "integer"
-				  }
-				
-			  ],
-	  
-			  "responses": {
-				"200": {
-				  "description": "Education deleted Successfull",
-				  "schema": {
-					"type": "object"
-				  }
-				},
-				"405": {
-				  "description": "Invalid input"
-				}
-			  }
-			}
-		  } ,
-		"/volunteerExperience/addVolExper": {
-			"post": {
-			  "summary": "User Resume volunteer Experience add",
-			  "tags": ["Volunteer Experience"],
-			  "content": ["application/json"],
-			  "parameters": [
-				{
-				  "name": "userId",
-				  "in": "formData",
-				  "description": "Enter user ID",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-				  "name": "organization",
-				  "in": "formData",
-				  "description": "Enter your organization detail",
-				  "required": false,
-				  "type": "string"
-				},
-				{
-				  "name": "role",
-				  "in": "formData",
-				  "description": "Enter your role detials",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-				  "name": "from",
-				  "in": "formData",
-				  "description": "Enter the date when you start",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-				  "name": "to",
-				  "in": "formData",
-				  "description": "Enter the date when you end",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-					"name": "cause",
-					"in": "formData",
-					"description": "Enter your cause",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					  "name": "currentlyStatus",
-					  "in": "formData",
-					  "description": "Enter your currentlyStatus",
-					  "required": "true",
-					  "enum":[0,1],
-					  "type": "string"
-					}
-			  ],
-	  
-			  "responses": {
-				"200": {
-				  "description": "Education add Successfull",
-				  "schema": {
-					"type": "object"
-				  }
-				},
-				"405": {
-				  "description": "Invalid input"
-				}
-			  }
-			}
-		  },
-		"/volunteerExperience/getVolExper": {
-			"get": {
-				"x-swagger-router-controller": "middleware-name1",
-				"summary": "User Resume Volunteer Experience get all details",
-				"tags": [
-					"Volunteer Experience"
-				],
-				"description": "Get Volunteer Experience List",
-				"security": [
-					{
-						"Bearer": []
-					}
-				],
-				"responses": {}
-			}
-		},
-	    "/volunteerExperience/editVolExper": {
-			"put": {
-			  "summary": "User Resume Volunteer Experience edit",
-			  "tags": ["Volunteer Experience"],
-			  "content": ["application/json"],
-			  "parameters": [
-				{
-				  "name": "id",
-				  "in": "formData",
-				  "description": "Enter Volunteer Experience ID",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-					"name": "organization",
-					"in": "formData",
-					"description": "Enter your organization detail",
-					"required": false,
-					"type": "string"
-				  },
-				  {
-					"name": "role",
-					"in": "formData",
-					"description": "Enter your role detials",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					"name": "from",
-					"in": "formData",
-					"description": "Enter the date when you start",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					"name": "to",
-					"in": "formData",
-					"description": "Enter the date when you end",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					  "name": "cause",
-					  "in": "formData",
-					  "description": "Enter your cause",
-					  "required": "true",
-					  "type": "string"
-					},
-					{
-						"name": "currentlyStatus",
-						"in": "formData",
-						"description": "Enter your currentlyStatus",
-						"required": "true",
-						"enum":[0,1],
-						"type": "string"
-					  }
-			  ],
-	  
-			  "responses": {
-				"200": {
-				  "description": "Education edit Successfull",
-				  "schema": {
-					"type": "object"
-				  }
-				},
-				"405": {
-				  "description": "Invalid input"
-				}
-			  }
-			}
-		  },
-		 "/volunteerExperience/deleteVolExper": {
-			"delete": {
-			  "summary": "User Resume Volunteer Experience deleted",
-			  "tags": ["Volunteer Experience"],
-			  "content": ["application/json"],
-			  "parameters": [
-				{
-				  "name": "id",
-				  "in": "formData",
-				  "description": "Enter volunteer Experience ID",
-				  "required": "true",
-				  "type": "string"
-				},
-				{
-					"name": "isDeleted",
-					"in": "formData",
-					"description": "Enter isDeleted value",
-					"enum":[0,1],
-					"required": "true",
-					"type": "integer"
-				  }
-				
-			  ],
-	  
-			  "responses": {
-				"200": {
-				  "description": "Education deleted Successfull",
-				  "schema": {
-					"type": "object"
-				  }
-				},
-				"405": {
-				  "description": "Invalid input"
-				}
-			  }
-			}
-		  },
-		  "/awardandhonour/addawadho": {
-			  "post": {
-				"summary": "User Resume award and honour add",
-				"tags": ["Award and Honour"],
-				"content": ["application/json"],
-				"parameters": [
-				  {
-					"name": "userId",
-					"in": "formData",
-					"description": "Enter user ID",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					"name": "title",
-					"in": "formData",
-					"description": "Enter your title",
-					"required": false,
-					"type": "string"
-				  },
-				  {
-					"name": "associatedwith",
-					"in": "formData",
-					"description": "Enter your the detials who is associated with you",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					"name": "issuer",
-					"in": "formData",
-					"description": "Enter who is issuer this ",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					"name": "issuedon",
-					"in": "formData",
-					"description": "Enter when they  issuedon",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					  "name": "description",
-					  "in": "formData",
-					  "description": "Enter your description",
-					  "required": "true",
-					  "type": "string"
-					}
-				],
-		
-				"responses": {
-				  "200": {
-					"description": "Education add Successfull",
-					"schema": {
-					  "type": "object"
-					}
-				  },
-				  "405": {
-					"description": "Invalid input"
-				  }
-				}
-			  }
-			},
-		  "/awardandhonour/getawadho": {
-			  "get": {
-				  "x-swagger-router-controller": "middleware-name1",
-				  "summary": "User Resume Award and Honour get all details",
-				  "tags": [
-					"Award and Honour"
-				  ],
-				  "description": "Get Volunteer Experience List",
-				  "security": [
-					  {
-						  "Bearer": []
-					  }
-				  ],
-				  "responses": {}
-			  }
-		  },
-		  "/awardandhonour/editawadho": {
-			  "put": {
-				"summary": "User Resume Award and Honour edit",
-				"tags": ["Award and Honour"],
-				"content": ["application/json"],
-				"parameters": [
-				  {
-					"name": "id",
-					"in": "formData",
-					"description": "Enter Award and Honour ID",
-					"required": "true",
-					"type": "string",
-					"value":"b46aa91f-18f4-4f6b-8934-e5a7eff63dd5"
-				  },
-				  {
-					"name": "title",
-					"in": "formData",
-					"description": "Enter your title",
-					"required": false,
-					"type": "string"
-				  },
-				  {
-					"name": "associatedwith",
-					"in": "formData",
-					"description": "Enter your the detials who is associated with you",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					"name": "issuer",
-					"in": "formData",
-					"description": "Enter who is issuer this ",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					"name": "issuedon",
-					"in": "formData",
-					"description": "Enter when they  issuedon",
-					"required": "true",
-					"type": "string"
-				  },
-				  {
-					  "name": "description",
-					  "in": "formData",
-					  "description": "Enter your description",
-					  "required": "true",
-					  "type": "string"
-					}
-				],
-		
-				"responses": {
-				  "200": {
-					"description": "Education edit Successfull",
-					"schema": {
-					  "type": "object"
-					}
-				  },
-				  "405": {
-					"description": "Invalid input"
-				  }
-				}
-			  }
-			},
-		   "/awardandhonour/deleteawadho": {
-			  "delete": {
-				"summary": "User Resume Award and Honour deleted",
-				"tags": ["Award and Honour"],
-				"content": ["application/json"],
-				"parameters": [
-				  {
-					"name": "id",
-					"in": "formData",
-					"description": "Enter volunteer Experience ID",
-					"required": "true",
-					"type": "string",
-					"value":"b46aa91f-18f4-4f6b-8934-e5a7eff63dd5"
-				  },
-				  {
-					  "name": "isDeleted",
-					  "in": "formData",
-					  "description": "Enter isDeleted value",
-					  "enum":[0,1],
-					  "required": "true",
-					  "type": "integer"
-					}
-				  
-				],
-		
-				"responses": {
-				  "200": {
-					"description": "Education deleted Successfull",
-					"schema": {
-					  "type": "object"
-					}
-				  },
-				  "405": {
-					"description": "Invalid input"
-				  }
-				}
-			  }
-			},
-			"/certificate/addcertification": {
-				"post": {
-				  "summary": "User Resume certification add",
-				  "tags": ["Licenses and certification"],
-				  "content": ["application/json"],
-				  "parameters": [
-					{
-					  "name": "userId",
-					  "in": "formData",
-					  "description": "Enter user ID",
-					  "required": "true",
-					  "type": "string",
-					  "value":"80d874f6-c488-4b1c-bb1a-946297a542a2"
-					},
-					{
-					  "name": "name",
-					  "in": "formData",
-					  "description": "Enter your name",
-					  "required": false,
-					  "type": "string",
-					  "value":"vaneet kumar"
-					},
-					{
-					  "name": "attestedby",
-					  "in": "formData",
-					  "description": "Enter who attested the certificate",
-					  "required": "true",
-					  "type": "string",
-					  "value":"Government of India"
-					},
-					{
-					  "name": "issuedate",
-					  "in": "formData",
-					  "description": "Enter issuedate ",
-					  "required": "true",
-					  "type": "string",
-					  "value":"2019-09-09"
-					},
-					{
-					  "name": "expirydate",
-					  "in": "formData",
-					  "description": "Enter expiry date",
-					  "required": "true",
-					  "type": "string",
-					  "value":"2030-09-09"
-					},
-					{
-						"name": "certificationo",
-						"in": "formData",
-						"description": "Enter certificatio no",
-						"required": "true",
-						"type": "string",
-						"value":"AEXP6789"
-					  },
-					  {
-						"name": "credentialURL",
-						"in": "formData",
-						"description": "Enter credential URL",
-						"required": "true",
-						"type": "string",
-						"value":"http://locahost:3002"
-					  }
-				  ],
-		  
-				  "responses": {
-					"200": {
-					  "description": "Certificate add Successfull",
-					  "schema": {
-						"type": "object"
-					  }
-					},
-					"405": {
-					  "description": "Invalid input"
-					}
-				  }
-				}
-			  },
-			"/certificate/getcertification": {
-				"get": {
-					"x-swagger-router-controller": "middleware-name1",
-					"summary": "User Resume certificate get all details",
-					"tags": [
-					  "Licenses and certification"
-					],
-					"description": "Get Volunteer Experience List",
-					"security": [
-						{
-							"Bearer": []
-						}
-					],
-					"responses": {}
-				}
-			},
-			"/certificate/editcertification": {
-				"put": {
-				  "summary": "User Resume certification edit",
-				  "tags": ["Licenses and certification"],
-				  "content": ["application/json"],
-				  "parameters": [
-					{
-					  "name": "id",
-					  "in": "formData",
-					  "description": "Enter Award and Honour ID",
-					  "required": "true",
-					  "type": "string",
-					  "value":"53becdf3-c284-4fdc-9239-98104a97ba1a"
-					},
-					{
-						"name": "name",
-						"in": "formData",
-						"description": "Enter your name",
-						"required": false,
-						"type": "string",
-						"value":"Vaneet thakur"
-					  },
-					  {
-						"name": "attestedby",
-						"in": "formData",
-						"description": "Enter who attested the certificate",
-						"required": "true",
-						"type": "string",
-						"value":"Govenment of HP"
-					  },
-					  {
-						"name": "issuedate",
-						"in": "formData",
-						"description": "Enter issuedate ",
-						"required": "true",
-						"type": "string",
-						"value":"2015-09-09"
-					  },
-					  {
-						"name": "expirydate",
-						"in": "formData",
-						"description": "Enter expiry date",
-						"required": "true",
-						"type": "string",
-						"value":"2040-09-09"
-					  },
-					  {
-						  "name": "certificationo",
-						  "in": "formData",
-						  "description": "Enter certificatio no",
-						  "required": "true",
-						  "type": "string",
-						  "value":"EXPRP6789"
-						},
-						{
-						  "name": "credentialURL",
-						  "in": "formData",
-						  "description": "Enter credential URL",
-						  "required": "true",
-						  "type": "string",
-						  "value":"www.google.com"
-						}
-				  ],
-		  
-				  "responses": {
-					"200": {
-					  "description": "Certificate edit Successfull",
-					  "schema": {
-						"type": "object"
-					  }
-					},
-					"405": {
-					  "description": "Invalid input"
-					}
-				  }
-				}
-			  },
-			 "/certificate/deletecertification": {
-				"delete": {
-				  "summary": "User Resume certification deleted",
-				  "tags": ["Licenses and certification"],
-				  "content": ["application/json"],
-				  "parameters": [
-					{
-					  "name": "id",
-					  "in": "formData",
-					  "description": "Enter volunteer Experience ID",
-					  "required": "true",
-					  "type": "string",
-					  "value":"53becdf3-c284-4fdc-9239-98104a97ba1a"
-					},
-					{
-						"name": "isDeleted",
-						"in": "formData",
-						"description": "Enter isDeleted value",
-						"enum":[0,1],
-						"required": "true",
-						"type": "integer"
-					  }
-					
-				  ],
-		  
-				  "responses": {
-					"200": {
-					  "description": "Certificate deleted Successfull",
-					  "schema": {
-						"type": "object"
-					  }
-					},
-					"405": {
-					  "description": "Invalid input"
-					}
-				  }
-				}
-			  },
-			  "/language/addlanguage": {
-				"post": {
-				  "summary": "User Register",
-				  "tags": ["User Language"],
-				  "content": ["application/json"],
-				  "parameters": [
-					{
-						"name": "userId",
-						"in": "formData",
-						"description": "Enter user ID",
-						"required": "true",
-						"type": "string",
-						"value":"80d874f6-c488-4b1c-bb1a-946297a542a2"
-					  },
-					{
-					  "name": "language",
-					  "in": "formData",
-					  "description": "Enter user language",
-					  "required": "true",
-					  "type": "string",
-					  "value":"English"
-					},
-					{
-					  "name": "proficiency",
-					  "in": "formData",
-					  "description": "Enter your proficiency",
-					  "required": false,
-					  "type": "string",
-					  "enum":["Beginner","Proficient","Expert"],
-					  "value":""
-					}
-				  ],
-		  
-				  "responses": {
-					"200": {
-					  "description": "language add Successfull",
-					  "schema": {
-						"type": "object"
-					  }
-					},
-					"405": {
-					  "description": "Invalid input"
-					}
-				  }
-				}
-			  },
-			  "/language/getlanguage": {
-				"get": {
-					"x-swagger-router-controller": "middleware-name1",
-					"summary": "User language get all details",
-					"tags": [
-					  "User Language"
-					],
-					"description": "Get Volunteer Experience List",
-					"security": [
-						{
-							"Bearer": []
-						}
-					],
-					"responses": {}
-				}
-			},
-			"/language/editlanguage": {
-				"put": {
-				  "summary": "User Resume language edit",
-				  "tags": ["User Language"],
-				  "content": ["application/json"],
-				  "parameters": [
-					{
-					  "name": "id",
-					  "in": "formData",
-					  "description": "Enter Award and Honour ID",
-					  "required": "true",
-					  "type": "string",
-					  "value":"377ef70e-3918-4e0f-a895-b456f81aa758"
-					},
-					{
-						"name": "language",
-						"in": "formData",
-						"description": "Enter user language",
-						"required": "true",
-						"type": "string",
-						"value":"English"
-					  },
-					  {
-						"name": "proficiency",
-						"in": "formData",
-						"description": "Enter your proficiency",
-						"required": false,
-						"type": "string",
-						"enum":["Beginner","Proficient","Expert"],
-						"value":""
-					  }
-				  ],
-		  
-				  "responses": {
-					"200": {
-					  "description": "language edit Successfull",
-					  "schema": {
-						"type": "object"
-					  }
-					},
-					"405": {
-					  "description": "Invalid input"
-					}
-				  }
-				}
-			  },
-			 "/language/deletelanguage": {
-				"delete": {
-				  "summary": "User Resume langugae deleted",
-				  "tags": ["User Language"],
-				  "content": ["application/json"],
-				  "parameters": [
-					{
-					  "name": "id",
-					  "in": "formData",
-					  "description": "Enter volunteer Experience ID",
-					  "required": "true",
-					  "type": "string",
-					  "value":"377ef70e-3918-4e0f-a895-b456f81aa758"
-					},
-					{
-						"name": "isDeleted",
-						"in": "formData",
-						"description": "Enter isDeleted value",
-						"enum":[0,1],
-						"required": "true",
-						"type": "integer"
-					  }
-					
-				  ],
-		  
-				  "responses": {
-					"200": {
-					  "description": "language deleted Successfull",
-					  "schema": {
-						"type": "object"
-					  }
-					},
-					"405": {
-					  "description": "Invalid input"
-					}
-				  }
-				}
-			  },
-			  "/projectUnderTaken/addProjectUnderTaken": {
-				"post": {
-				  "summary": "User Resume Project under taken add",
-				  "tags": ["Project under taken "],
-				  "content": ["application/json"],
-				  "parameters": [
-					{
-					  "name": "userId",
-					  "in": "formData",
-					  "description": "Enter user ID",
-					  "required": "true",
-					  "type": "string",
-					  "value":"80d874f6-c488-4b1c-bb1a-946297a542a2"
-					},
-					{
-					  "name": "associatedWith",
-					  "in": "formData",
-					  "description": "Enter who is associated with you with your project detail",
-					  "required": false,
-					  "type": "string",
-					  "value":"Sourabh kumar"
-					},
-					{
-					  "name": "projectTitle",
-					  "in": "formData",
-					  "description": "Enter your project Title detials",
-					  "required": "true",
-					  "type": "string",
-					  "value":"Honovet"
-					},
-					{
-					  "name": "from",
-					  "in": "formData",
-					  "description": "Enter the date when you start",
-					  "required": "true",
-					  "type": "string",
-					  "value":"2022-12-06"
-					},
-					{
-					  "name": "to",
-					  "in": "formData",
-					  "description": "Enter the date when you end",
-					  "required": "true",
-					  "type": "string",
-					  "value":"2022-12-08"
-					},
-					{
-						"name": "location",
-						"in": "formData",
-						"description": "Enter your location",
-						"required": "true",
-						"type": "string",
-						"value":"Applify Mohali"
-					  },
-					  {
-						  "name": "currentlyOnGoing",
-						  "in": "formData",
-						  "description": "Enter your currently On Going status",
-						  "required": "true",
-						  "enum":[0,1],
-						  "type": "string"
-						},
-						{
-							"name": "projectDetails",
-							"in": "formData",
-							"description": "Enter your project Details",
-							"required": "true",
-							"type": "string",
-							"value":"It is job finder project"
-						  }
-				  ],
-		  
-				  "responses": {
-					"200": {
-					  "description": "Project under taken add Successfull",
-					  "schema": {
-						"type": "object"
-					  }
-					},
-					"405": {
-					  "description": "Invalid input"
-					}
-				  }
-				}
-			  },
-			"/projectUnderTaken/getProjectUnderTaken": {
-				"get": {
-					"x-swagger-router-controller": "middleware-name1",
-					"summary": "User Resume project under taken get all details",
-					"tags": [
-						"Project under taken "
-					],
-					"description": "Get Project under taken List",
-					"security": [
-						{
-							"Bearer": []
-						}
-					],
-					"responses": {}
-				}
-			},
-			"/projectUnderTaken/editProjectUnderTaken": {
-				"put": {
-				  "summary": "User Resume Project under taken edit",
-				  "tags": ["Project under taken "],
-				  "content": ["application/json"],
-				  "parameters": [
-					{
-					  "name": "id",
-					  "in": "formData",
-					  "description": "Enter Volunteer Experience ID",
-					  "required": "true",
-					  "type": "string",
-					  "value":"e71fbbae-2f5c-43a2-9d7c-981139c12c39"
-					},
-					{
-						"name": "associatedWith",
-						"in": "formData",
-						"description": "Enter who is associated with you with your project detail",
-						"required": false,
-						"type": "string",
-						"value":"Self"
-					  },
-					  {
-						"name": "projectTitle",
-						"in": "formData",
-						"description": "Enter your project Title detials",
-						"required": "true",
-						"type": "string",
-						"value":"Honovet IOS APP"
-					  },
-					  {
-						"name": "from",
-						"in": "formData",
-						"description": "Enter the date when you start",
-						"required": "true",
-						"type": "string",
-						"value":"2022-12-06"
-					  },
-					  {
-						"name": "to",
-						"in": "formData",
-						"description": "Enter the date when you end",
-						"required": "true",
-						"type": "string",
-						"value":"2022-12-08"
-					  },
-					  {
-						  "name": "location",
-						  "in": "formData",
-						  "description": "Enter your location",
-						  "required": "true",
-						  "type": "string",
-						  "value":"Applify"
-						},
-						{
-							"name": "currentlyOnGoing",
-							"in": "formData",
-							"description": "Enter your currently On Going status",
-							"required": "true",
-							"enum":[0,1],
-							"type": "string"
-						  },
-						  {
-							  "name": "projectDetails",
-							  "in": "formData",
-							  "description": "Enter your project Details",
-							  "required": "true",
-							  "type": "string",
-							  "value":"Create for self practice"
-							}
-				  ],
-		  
-				  "responses": {
-					"200": {
-					  "description": "Project under taken edit Successfull",
-					  "schema": {
-						"type": "object"
-					  }
-					},
-					"405": {
-					  "description": "Invalid input"
-					}
-				  }
-				}
-			  },
-			 "/projectUnderTaken/deleteProjectUnderTaken": {
-				"delete": {
-				  "summary": "User Resume Project under taken deleted",
-				  "tags": ["Project under taken "],
-				  "content": ["application/json"],
-				  "parameters": [
-					{
-					  "name": "id",
-					  "in": "formData",
-					  "description": "Enter Project Under taken ID",
-					  "required": "true",
-					  "type": "string",
-					  "value":"e71fbbae-2f5c-43a2-9d7c-981139c12c39"
-					},
-					{
-						"name": "isDeleted",
-						"in": "formData",
-						"description": "Enter isDeleted value",
-						"enum":[0,1],
-						"required": "true",
-						"type": "integer"
-					  }
-					
-				  ],
-		  
-				  "responses": {
-					"200": {
-					  "description": "Project under taken details deleted Successfull",
-					  "schema": {
-						"type": "object"
-					  }
-					},
-					"405": {
-					  "description": "Invalid input"
-					}
-				  }
-				}
-			  }
-	}, 
-	"definitions": {
-		"skill": {
-			"type": "array",
-			"properties": {
-				"Skill": {
-					"type": "array"
-				} 
-			}
+  "swagger": "2.0",
+  "info": {
+    "title": "honorVet Project - API",
+    "description": "honorVet Project -  Admin API Documentation",
+    "version": "1.0"
+  },
+  "produces": ["application/json"],
+  "basePath": "/",
+  "securityDefinitions": {
+    "Bearer": {
+      "type": "apiKey",
+      "name": "authorization",
+      "in": "header"
+    }
+  },
+  "paths": {
+    "/profile/add": {
+      "post": {
+        "summary": "User Register",
+        "tags": ["User Profile"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "Name",
+            "in": "formData",
+            "description": "Enter user Name",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Enter your email",
+            "required": false,
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education add Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
         }
-	}
+      }
+    },
+    "/profile/login": {
+      "post": {
+        "summary": "User Register",
+        "tags": ["User Profile"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Enter user email",
+            "required": "true",
+            "type": "string",
+            "value": "vaneet3157@gmail.com"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "description": "Enter your password",
+            "required": false,
+            "type": "string",
+            "value": "123456"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education add Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/profile/edit_profile": {
+      "put": {
+        "summary": "User Profile add",
+        "tags": ["User Profile"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter user id",
+            "required": "true",
+            "type": "string",
+            "value": "80d874f6-c488-4b1c-bb1a-946297a542a2"
+          },
+          {
+            "name": "Image",
+            "in": "formData",
+            "description": "Enter Image",
+            "required": true,
+            "type": "string",
+            "value": "img.png"
+          },
+          {
+            "name": "Pronouns",
+            "in": "formData",
+            "description": "Enter Pronouns",
+            "enum": ["He / Him", "She / Her", "They / Them", "Add Custom"],
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "Bio",
+            "in": "formData",
+            "description": "Enter your Bio",
+            "required": "true",
+            "type": "string",
+            "value": "My bio"
+          },
+          {
+            "name": "phoneNumber",
+            "in": "formData",
+            "description": "Enter your phoneNumber",
+            "required": "true",
+            "type": "string",
+            "value": "123456789"
+          },
+          {
+            "name": "dateOfBirth",
+            "in": "formData",
+            "description": "Enter your dateOfBirth",
+            "required": "true",
+            "type": "string",
+            "value": "1998-01-26"
+          },
+          {
+            "name": "Gender",
+            "in": "formData",
+            "description": "Enter Gender",
+            "enum": ["Male", "Female", "Other"],
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "HonorsAwards",
+            "in": "formData",
+            "description": "Enter HonorsAwards",
+            "required": "true",
+            "type": "string",
+            "value": "None"
+          },
+          {
+            "name": "serviceDisabled",
+            "in": "formData",
+            "description": "Enter your serviceDisabled",
+            "enum": [0, 1],
+            "required": "true",
+            "type": "integer"
+          },
+          {
+            "name": "myPersonalities",
+            "in": "formData",
+            "description": "Enter your Personalities",
+            "required": "true",
+            "type": "string",
+            "value": "person"
+          },
+          {
+            "name": "currentLocation",
+            "in": "formData",
+            "description": "Enter your currentLocation",
+            "required": "true",
+            "type": "string",
+            "value": "Applify Mohali"
+          },
+          {
+            "name": "location",
+            "in": "formData",
+            "description": "Enter location",
+            "required": true,
+            "type": "string",
+            "value": "Mohali"
+          },
+          {
+            "name": "zipCode",
+            "in": "formData",
+            "description": "Enter zipCode",
+            "required": "true",
+            "type": "integer",
+            "value": "123456"
+          },
+          {
+            "name": "document",
+            "in": "formData",
+            "description": "Enter your document",
+            "required": "true",
+            "type": "string",
+            "value": "doc.zip"
+          },
+          {
+            "name": "marriageCertificate",
+            "in": "formData",
+            "description": "Enter your marriageCertificate",
+            "required": "true",
+            "type": "string",
+            "value": "None"
+          },
+          {
+            "name": "spouseName",
+            "in": "formData",
+            "description": "Enter your spouseName",
+            "required": "true",
+            "type": "string",
+            "value": "Applify"
+          },
+          {
+            "name": "service",
+            "in": "formData",
+            "description": "Enter service",
+            "required": true,
+            "type": "string",
+            "value": "None"
+          },
+          {
+            "name": "jobTitle",
+            "in": "formData",
+            "description": "Enter jobTitle",
+            "required": "true",
+            "type": "string",
+            "value": "Full-Stack"
+          },
+          {
+            "name": "servicehonorsAwards",
+            "in": "formData",
+            "description": "Enter your servicehonorsAwards",
+            "required": "true",
+            "type": "string",
+            "value": "None"
+          },
+          {
+            "name": "vegetranServiceDisabled",
+            "in": "formData",
+            "description": "Enter your vegetranServiceDisabled",
+            "required": "true",
+            "enum": [0, 1],
+            "type": "integer"
+          },
+          {
+            "name": "termCondition",
+            "in": "formData",
+            "description": "Enter your termCondition",
+            "enum": [0, 1],
+            "required": "true",
+            "type": "number"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education add Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/skill/addSkill": {
+      "post": {
+        "x-swagger-router-controller": "middleware-name1",
+
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": ["User Skill"],
+        "description": "Add skill of user for creation of resume",
+        "consumes": "application/json",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "required": false
+                },
+                "Skill": {
+                  "type": "array",
+                  "required": true,
+                  "items": {
+                    "$ref": "#/definitions/Skill"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/skill/getSkill/{id}": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "tags": ["User Skill"],
+        "description": "Get Skills List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of task",
+            "type": "string",
+            "format": "uuid",
+            "value": "",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/skill/getSkill": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "tags": ["User Skill"],
+        "description": "Get Skills List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/education/addEducation": {
+      "post": {
+        "summary": "User Resume education add",
+        "tags": ["Education"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "formData",
+            "description": "Enter user ID",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "degree",
+            "in": "formData",
+            "description": "Enter degree or specilization detail",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "university",
+            "in": "formData",
+            "description": "Enter university or institution detials",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "from",
+            "in": "formData",
+            "description": "Enter the date when you start",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "to",
+            "in": "formData",
+            "description": "Enter the date when you end",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "score",
+            "in": "formData",
+            "description": "Enter your score",
+            "required": "true",
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education add Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/education/getEducation": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "tags": ["Education"],
+        "description": "Get education List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/education/editEducation": {
+      "put": {
+        "summary": "User Resume education edit",
+        "tags": ["Education"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter education ID",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "degree",
+            "in": "formData",
+            "description": "Enter degree or specilization detail",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "university",
+            "in": "formData",
+            "description": "Enter university or institution detials",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "from",
+            "in": "formData",
+            "description": "Enter the date when you start",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "to",
+            "in": "formData",
+            "description": "Enter the date when you end",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "score",
+            "in": "formData",
+            "description": "Enter your score",
+            "required": "true",
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education edit Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/education/deleteEducation": {
+      "delete": {
+        "summary": "User Resume education deleted",
+        "tags": ["Education"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter education ID",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "isDeleted",
+            "in": "formData",
+            "description": "Enter isDeleted value",
+            "enum": [0, 1],
+            "required": "true",
+            "type": "integer"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education deleted Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/experience/addExperience": {
+      "post": {
+        "summary": "User Work Experience add",
+        "tags": ["Work Experience"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "formData",
+            "description": "Enter user ID",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "jobTitle",
+            "in": "formData",
+            "description": "Enter job Title detail",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "company",
+            "in": "formData",
+            "description": "Enter company detials",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "location",
+            "in": "formData",
+            "description": "Enter your location",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "from",
+            "in": "formData",
+            "description": "Enter the date when you start",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "to",
+            "in": "formData",
+            "description": "Enter the date when you end",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "employmentType",
+            "in": "formData",
+            "description": "Enter your employmentType",
+            "enum": ["Full_time", "Part_time", "Contractual", "Seasonal"],
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "jobDescription",
+            "in": "formData",
+            "description": "Enter your job Description",
+            "required": "true",
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education add Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/experince/getExperience": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "tags": ["Work Experience"],
+        "description": "Get education List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/experience/editExperience": {
+      "put": {
+        "summary": "User Work Experience edit",
+        "tags": ["Work Experience"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter Work Experience ID",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "jobTitle",
+            "in": "formData",
+            "description": "Enter job Title detail",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "company",
+            "in": "formData",
+            "description": "Enter company detials",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "location",
+            "in": "formData",
+            "description": "Enter your location",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "from",
+            "in": "formData",
+            "description": "Enter the date when you start",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "to",
+            "in": "formData",
+            "description": "Enter the date when you end",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "employmentType",
+            "in": "formData",
+            "description": "Enter your employmentType",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "jobDescription",
+            "in": "formData",
+            "description": "Enter your job Description",
+            "required": "true",
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education edit Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/experience/deleteExperience": {
+      "delete": {
+        "summary": "User Work Experience deleted",
+        "tags": ["Work Experience"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter education ID",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "isDeleted",
+            "in": "formData",
+            "description": "Enter isDeleted value",
+            "enum": [0, 1],
+            "required": "true",
+            "type": "integer"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education deleted Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/volunteerExperience/addVolExper": {
+      "post": {
+        "summary": "User Resume volunteer Experience add",
+        "tags": ["Volunteer Experience"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "formData",
+            "description": "Enter user ID",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "organization",
+            "in": "formData",
+            "description": "Enter your organization detail",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "in": "formData",
+            "description": "Enter your role detials",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "from",
+            "in": "formData",
+            "description": "Enter the date when you start",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "to",
+            "in": "formData",
+            "description": "Enter the date when you end",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "cause",
+            "in": "formData",
+            "description": "Enter your cause",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "currentlyStatus",
+            "in": "formData",
+            "description": "Enter your currentlyStatus",
+            "required": "true",
+            "enum": [0, 1],
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education add Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/volunteerExperience/getVolExper": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "summary": "User Resume Volunteer Experience get all details",
+        "tags": ["Volunteer Experience"],
+        "description": "Get Volunteer Experience List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/volunteerExperience/editVolExper": {
+      "put": {
+        "summary": "User Resume Volunteer Experience edit",
+        "tags": ["Volunteer Experience"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter Volunteer Experience ID",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "organization",
+            "in": "formData",
+            "description": "Enter your organization detail",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "in": "formData",
+            "description": "Enter your role detials",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "from",
+            "in": "formData",
+            "description": "Enter the date when you start",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "to",
+            "in": "formData",
+            "description": "Enter the date when you end",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "cause",
+            "in": "formData",
+            "description": "Enter your cause",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "currentlyStatus",
+            "in": "formData",
+            "description": "Enter your currentlyStatus",
+            "required": "true",
+            "enum": [0, 1],
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education edit Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/volunteerExperience/deleteVolExper": {
+      "delete": {
+        "summary": "User Resume Volunteer Experience deleted",
+        "tags": ["Volunteer Experience"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter volunteer Experience ID",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "isDeleted",
+            "in": "formData",
+            "description": "Enter isDeleted value",
+            "enum": [0, 1],
+            "required": "true",
+            "type": "integer"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education deleted Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/awardandhonour/addawadho": {
+      "post": {
+        "summary": "User Resume award and honour add",
+        "tags": ["Award and Honour"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "formData",
+            "description": "Enter user ID",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "title",
+            "in": "formData",
+            "description": "Enter your title",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "associatedwith",
+            "in": "formData",
+            "description": "Enter your the detials who is associated with you",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "issuer",
+            "in": "formData",
+            "description": "Enter who is issuer this ",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "issuedon",
+            "in": "formData",
+            "description": "Enter when they  issuedon",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "description": "Enter your description",
+            "required": "true",
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education add Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/awardandhonour/getawadho": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "summary": "User Resume Award and Honour get all details",
+        "tags": ["Award and Honour"],
+        "description": "Get Volunteer Experience List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/awardandhonour/editawadho": {
+      "put": {
+        "summary": "User Resume Award and Honour edit",
+        "tags": ["Award and Honour"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter Award and Honour ID",
+            "required": "true",
+            "type": "string",
+            "value": "b46aa91f-18f4-4f6b-8934-e5a7eff63dd5"
+          },
+          {
+            "name": "title",
+            "in": "formData",
+            "description": "Enter your title",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "associatedwith",
+            "in": "formData",
+            "description": "Enter your the detials who is associated with you",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "issuer",
+            "in": "formData",
+            "description": "Enter who is issuer this ",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "issuedon",
+            "in": "formData",
+            "description": "Enter when they  issuedon",
+            "required": "true",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "description": "Enter your description",
+            "required": "true",
+            "type": "string"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education edit Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/awardandhonour/deleteawadho": {
+      "delete": {
+        "summary": "User Resume Award and Honour deleted",
+        "tags": ["Award and Honour"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter volunteer Experience ID",
+            "required": "true",
+            "type": "string",
+            "value": "b46aa91f-18f4-4f6b-8934-e5a7eff63dd5"
+          },
+          {
+            "name": "isDeleted",
+            "in": "formData",
+            "description": "Enter isDeleted value",
+            "enum": [0, 1],
+            "required": "true",
+            "type": "integer"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Education deleted Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/certificate/addcertification": {
+      "post": {
+        "summary": "User Resume certification add",
+        "tags": ["Licenses and certification"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "formData",
+            "description": "Enter user ID",
+            "required": "true",
+            "type": "string",
+            "value": "80d874f6-c488-4b1c-bb1a-946297a542a2"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Enter your name",
+            "required": false,
+            "type": "string",
+            "value": "vaneet kumar"
+          },
+          {
+            "name": "attestedby",
+            "in": "formData",
+            "description": "Enter who attested the certificate",
+            "required": "true",
+            "type": "string",
+            "value": "Government of India"
+          },
+          {
+            "name": "issuedate",
+            "in": "formData",
+            "description": "Enter issuedate ",
+            "required": "true",
+            "type": "string",
+            "value": "2019-09-09"
+          },
+          {
+            "name": "expirydate",
+            "in": "formData",
+            "description": "Enter expiry date",
+            "required": "true",
+            "type": "string",
+            "value": "2030-09-09"
+          },
+          {
+            "name": "certificationo",
+            "in": "formData",
+            "description": "Enter certificatio no",
+            "required": "true",
+            "type": "string",
+            "value": "AEXP6789"
+          },
+          {
+            "name": "credentialURL",
+            "in": "formData",
+            "description": "Enter credential URL",
+            "required": "true",
+            "type": "string",
+            "value": "http://locahost:3002"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Certificate add Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/certificate/getcertification": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "summary": "User Resume certificate get all details",
+        "tags": ["Licenses and certification"],
+        "description": "Get Volunteer Experience List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/certificate/editcertification": {
+      "put": {
+        "summary": "User Resume certification edit",
+        "tags": ["Licenses and certification"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter Award and Honour ID",
+            "required": "true",
+            "type": "string",
+            "value": "53becdf3-c284-4fdc-9239-98104a97ba1a"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Enter your name",
+            "required": false,
+            "type": "string",
+            "value": "Vaneet thakur"
+          },
+          {
+            "name": "attestedby",
+            "in": "formData",
+            "description": "Enter who attested the certificate",
+            "required": "true",
+            "type": "string",
+            "value": "Govenment of HP"
+          },
+          {
+            "name": "issuedate",
+            "in": "formData",
+            "description": "Enter issuedate ",
+            "required": "true",
+            "type": "string",
+            "value": "2015-09-09"
+          },
+          {
+            "name": "expirydate",
+            "in": "formData",
+            "description": "Enter expiry date",
+            "required": "true",
+            "type": "string",
+            "value": "2040-09-09"
+          },
+          {
+            "name": "certificationo",
+            "in": "formData",
+            "description": "Enter certificatio no",
+            "required": "true",
+            "type": "string",
+            "value": "EXPRP6789"
+          },
+          {
+            "name": "credentialURL",
+            "in": "formData",
+            "description": "Enter credential URL",
+            "required": "true",
+            "type": "string",
+            "value": "www.google.com"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Certificate edit Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/certificate/deletecertification": {
+      "delete": {
+        "summary": "User Resume certification deleted",
+        "tags": ["Licenses and certification"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter volunteer Experience ID",
+            "required": "true",
+            "type": "string",
+            "value": "53becdf3-c284-4fdc-9239-98104a97ba1a"
+          },
+          {
+            "name": "isDeleted",
+            "in": "formData",
+            "description": "Enter isDeleted value",
+            "enum": [0, 1],
+            "required": "true",
+            "type": "integer"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Certificate deleted Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/language/addlanguage": {
+      "post": {
+        "summary": "User Register",
+        "tags": ["User Language"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "formData",
+            "description": "Enter user ID",
+            "required": "true",
+            "type": "string",
+            "value": "80d874f6-c488-4b1c-bb1a-946297a542a2"
+          },
+          {
+            "name": "language",
+            "in": "formData",
+            "description": "Enter user language",
+            "required": "true",
+            "type": "string",
+            "value": "English"
+          },
+          {
+            "name": "proficiency",
+            "in": "formData",
+            "description": "Enter your proficiency",
+            "required": false,
+            "type": "string",
+            "enum": ["Beginner", "Proficient", "Expert"],
+            "value": ""
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "language add Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/language/getlanguage": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "summary": "User language get all details",
+        "tags": ["User Language"],
+        "description": "Get Volunteer Experience List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/language/editlanguage": {
+      "put": {
+        "summary": "User Resume language edit",
+        "tags": ["User Language"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter Award and Honour ID",
+            "required": "true",
+            "type": "string",
+            "value": "377ef70e-3918-4e0f-a895-b456f81aa758"
+          },
+          {
+            "name": "language",
+            "in": "formData",
+            "description": "Enter user language",
+            "required": "true",
+            "type": "string",
+            "value": "English"
+          },
+          {
+            "name": "proficiency",
+            "in": "formData",
+            "description": "Enter your proficiency",
+            "required": false,
+            "type": "string",
+            "enum": ["Beginner", "Proficient", "Expert"],
+            "value": ""
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "language edit Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/language/deletelanguage": {
+      "delete": {
+        "summary": "User Resume langugae deleted",
+        "tags": ["User Language"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter volunteer Experience ID",
+            "required": "true",
+            "type": "string",
+            "value": "377ef70e-3918-4e0f-a895-b456f81aa758"
+          },
+          {
+            "name": "isDeleted",
+            "in": "formData",
+            "description": "Enter isDeleted value",
+            "enum": [0, 1],
+            "required": "true",
+            "type": "integer"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "language deleted Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/projectUnderTaken/addProjectUnderTaken": {
+      "post": {
+        "summary": "User Resume Project under taken add",
+        "tags": ["Project under taken "],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "formData",
+            "description": "Enter user ID",
+            "required": "true",
+            "type": "string",
+            "value": "80d874f6-c488-4b1c-bb1a-946297a542a2"
+          },
+          {
+            "name": "associatedWith",
+            "in": "formData",
+            "description": "Enter who is associated with you with your project detail",
+            "required": false,
+            "type": "string",
+            "value": "Sourabh kumar"
+          },
+          {
+            "name": "projectTitle",
+            "in": "formData",
+            "description": "Enter your project Title detials",
+            "required": "true",
+            "type": "string",
+            "value": "Honovet"
+          },
+          {
+            "name": "from",
+            "in": "formData",
+            "description": "Enter the date when you start",
+            "required": "true",
+            "type": "string",
+            "value": "2022-12-06"
+          },
+          {
+            "name": "to",
+            "in": "formData",
+            "description": "Enter the date when you end",
+            "required": "true",
+            "type": "string",
+            "value": "2022-12-08"
+          },
+          {
+            "name": "location",
+            "in": "formData",
+            "description": "Enter your location",
+            "required": "true",
+            "type": "string",
+            "value": "Applify Mohali"
+          },
+          {
+            "name": "currentlyOnGoing",
+            "in": "formData",
+            "description": "Enter your currently On Going status",
+            "required": "true",
+            "enum": [0, 1],
+            "type": "string"
+          },
+          {
+            "name": "projectDetails",
+            "in": "formData",
+            "description": "Enter your project Details",
+            "required": "true",
+            "type": "string",
+            "value": "It is job finder project"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Project under taken add Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/projectUnderTaken/getProjectUnderTaken": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "summary": "User Resume project under taken get all details",
+        "tags": ["Project under taken "],
+        "description": "Get Project under taken List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/projectUnderTaken/editProjectUnderTaken": {
+      "put": {
+        "summary": "User Resume Project under taken edit",
+        "tags": ["Project under taken "],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter Volunteer Experience ID",
+            "required": "true",
+            "type": "string",
+            "value": "e71fbbae-2f5c-43a2-9d7c-981139c12c39"
+          },
+          {
+            "name": "associatedWith",
+            "in": "formData",
+            "description": "Enter who is associated with you with your project detail",
+            "required": false,
+            "type": "string",
+            "value": "Self"
+          },
+          {
+            "name": "projectTitle",
+            "in": "formData",
+            "description": "Enter your project Title detials",
+            "required": "true",
+            "type": "string",
+            "value": "Honovet IOS APP"
+          },
+          {
+            "name": "from",
+            "in": "formData",
+            "description": "Enter the date when you start",
+            "required": "true",
+            "type": "string",
+            "value": "2022-12-06"
+          },
+          {
+            "name": "to",
+            "in": "formData",
+            "description": "Enter the date when you end",
+            "required": "true",
+            "type": "string",
+            "value": "2022-12-08"
+          },
+          {
+            "name": "location",
+            "in": "formData",
+            "description": "Enter your location",
+            "required": "true",
+            "type": "string",
+            "value": "Applify"
+          },
+          {
+            "name": "currentlyOnGoing",
+            "in": "formData",
+            "description": "Enter your currently On Going status",
+            "required": "true",
+            "enum": [0, 1],
+            "type": "string"
+          },
+          {
+            "name": "projectDetails",
+            "in": "formData",
+            "description": "Enter your project Details",
+            "required": "true",
+            "type": "string",
+            "value": "Create for self practice"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Project under taken edit Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/projectUnderTaken/deleteProjectUnderTaken": {
+      "delete": {
+        "summary": "User Resume Project under taken deleted",
+        "tags": ["Project under taken "],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter Project Under taken ID",
+            "required": "true",
+            "type": "string",
+            "value": "e71fbbae-2f5c-43a2-9d7c-981139c12c39"
+          },
+          {
+            "name": "isDeleted",
+            "in": "formData",
+            "description": "Enter isDeleted value",
+            "enum": [0, 1],
+            "required": "true",
+            "type": "integer"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Project under taken details deleted Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/projectUnderTakenlink/addlink": {
+      "post": {
+        "x-swagger-router-controller": "middleware-name1",
+
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": ["Project under takens Projects links"],
+        "description": "Add project undertaken project links for creation of resume",
+        "consumes": "application/json",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "properties": {
+                "projectUndertakenId": {
+                  "type": "string",
+                  "required": false
+                },
+                "Link": {
+                  "type": "array",
+                  "required": true,
+                  "items": {
+                    "$ref": "#/definitions/Link"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/projectUnderTakenlink/getlink/{id}": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "tags": ["Project under takens Projects links"],
+        "description": "Get project link List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of task",
+            "type": "string",
+            "format": "uuid",
+            "value": "",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/projectUnderTakenlink/getlink": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "tags": ["Project under takens Projects links"],
+        "description": "Get project links List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/projectUnderTakenlink/editlink": {
+      "put": {
+        "x-swagger-router-controller": "middleware-name1",
+        "tags": ["Project under takens Projects links"],
+        "description": "Delete project link List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "properties": {
+                "id":{
+                  "type":"string",
+                  "required":true
+                },
+                "projectUndertakenId": {
+                  "type": "string",
+                  "required": false
+                },
+                "Links": {
+                  "type": "array",
+                  "required": true,
+                  "items": {
+                    "$ref": "#/definitions/Links"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/projectUnderTakenlink/deletelink": {
+      "delete": {
+        "x-swagger-router-controller": "middleware-name1",
+        "tags": ["Project under takens Projects links"],
+        "description": "Delete project link List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "id of link",
+            "type": "string",
+            "format": "uuid",
+            "value": "",
+            "required": true
+          },
+          {
+            "name": "isDeleted",
+            "in": "formData",
+            "description": "Enter isDeleted value",
+            "enum": [0, 1],
+            "required": "true",
+            "type": "integer"
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/projectUnderTakenTeamMember/addteamMember": {
+      "post": {
+        "summary": "Team member Register",
+        "tags": ["Project Under Taken Team Member"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "projectUndertakenId",
+            "in": "formData",
+            "description": "Enter projectUndertakenId",
+            "required": "true",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Enter team member name",
+            "required": "true",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Enter team member email",
+            "required": false,
+            "type": "string",
+            "value": ""
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Team member add Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/projectUnderTakenTeamMember/getteamMember": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "summary": "Project under taken team member get all details",
+        "tags": ["Project Under Taken Team Member"],
+        "description": "Get Volunteer Experience List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/projectUnderTakenTeamMember/editteamMember": {
+      "put": {
+        "summary": "Project under taken team member profile edit",
+        "tags": ["Project Under Taken Team Member"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter team member id",
+            "required": "true",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "Enter team member name",
+            "required": "true",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "email",
+            "in": "formData",
+            "description": "Enter team member name",
+            "required": false,
+            "type": "string",
+            "value": ""
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Team member profile edit Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/projectUnderTakenTeamMember/deleteteamMember": {
+      "delete": {
+        "summary": "Project under taken team member deleted",
+        "tags": ["Project Under Taken Team Member"],
+        "content": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData",
+            "description": "Enter volunteer Experience ID",
+            "required": "true",
+            "type": "string",
+            "value": ""
+          },
+          {
+            "name": "isDeleted",
+            "in": "formData",
+            "description": "Enter isDeleted value",
+            "enum": [0, 1],
+            "required": "true",
+            "type": "integer"
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "Team member deleted Successfull",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/projectUnderTakenMedia/addMedia": {
+      "post": {
+        "x-swagger-router-controller": "middleware-name1",
+
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "tags": ["Project under takens Projects Media"],
+        "description": "Add project undertaken project Media for creation of resume",
+        "consumes": "application/json",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "properties": {
+                "projectUndertakenId": {
+                  "type": "string",
+                  "required": false
+                },
+                "Media": {
+                  "type": "array",
+                  "required": true,
+                  "items": {
+                    "$ref": "#/definitions/Media"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/projectUnderTakenMedia/getMedia/{id}": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "tags": ["Project under takens Projects Media"],
+        "description": "Get project Media List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of media",
+            "type": "string",
+            "format": "uuid",
+            "value": "",
+            "required": true
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/projectUnderTakenMedia/getMedia": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "tags": ["Project under takens Projects Media"],
+        "description": "Get project Media List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/projectUnderTakenMedia/editMedia": {
+      "put": {
+        "x-swagger-router-controller": "middleware-name1",
+        "tags": ["Project under takens Projects Media"],
+        "description": "Delete project Media List",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "properties": {
+                "id":{
+                  "type":"string",
+                  "required":true
+                },
+                "projectUndertakenId": {
+                  "type": "string",
+                  "required": false
+                },
+                "Media": {
+                  "type": "array",
+                  "required": true,
+                  "items": {
+                    "$ref": "#/definitions/Media"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/projectUnderTakenMedia/deleteMedia": {
+      "delete": {
+        "x-swagger-router-controller": "middleware-name1",
+        "tags": ["Project under takens Projects Media"],
+        "description": "Delete project Media",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "formData", 
+            "description": "id of media",
+            "type": "string",
+            "format": "uuid",
+            "value": "",
+            "required": true
+          },
+          {
+            "name": "isDeleted",
+            "in": "formData",
+            "description": "Enter isDeleted value",
+            "enum": [0, 1],
+            "required": "true",
+            "type": "integer"
+          }
+        ],
+        "responses": {}
+      }
+    }
+  },
+  "definitions": {
+    "skill": {
+      "type": "array",
+      "properties": {
+        "Skill": {
+          "type": "array"
+        }
+      }
+    },
+    "link": {
+      "type": "array",
+      "properties": {
+        "Link": {
+          "type": "array"
+        }
+      }
+    },
+    "media": {
+      "type": "array",
+      "properties": {
+        "Media": {
+          "type": "array"
+        }
+      }
+    }
+  } 
 }

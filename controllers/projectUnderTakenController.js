@@ -42,7 +42,6 @@ module.exports = {
     }
   },
   getProjectAll :  async() => {
-    
     let volunteerExperience = Service.projectUnderTaken.getAllUsers(projectUnderTakenProjection);
     if (volunteerExperience) {
       return volunteerExperience;

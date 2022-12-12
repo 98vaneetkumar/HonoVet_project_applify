@@ -18,6 +18,10 @@ var awardandhonour=require("./routes/awardandhonorsRouter")
 var certificate=require("./routes/licensedandcertificateRouter")
 var language=require("./routes/languageRouter")
 var projectundertaken=require("./routes/projectUnderTakenRouter")
+var projectUnderTakenlink=require("./routes/addlinkRouter")
+var projectUnderTakenTeamMember=require("./routes/projectUnderTakenTeamMemberRouter")
+var projectUnderTakenMedia=require("./routes/projectUnderTakenMediaRouter")
+var resume=require("./routes/resumeRouter")
 
 var __dirname = path.resolve();
 var app = express();
@@ -80,6 +84,10 @@ app.use("/awardandhonour", awardandhonour);
 app.use("/certificate",certificate)
 app.use("/language",language)
 app.use("/projectUnderTaken",projectundertaken)
+app.use("/projectUnderTakenlink",projectUnderTakenlink)
+app.use("/projectUnderTakenTeamMember",projectUnderTakenTeamMember)
+app.use("/projectUnderTakenMedia",projectUnderTakenMedia)
+app.use("/resume",resume)
 
 
 require("./dbConnection").connectDB();

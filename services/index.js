@@ -8,4 +8,8 @@ module.exports= {
     liecenceandcertificateService:require("./licenceandcertificateService"),
     language:require("./languageService"),
     projectUnderTaken:require("./porjectUnderTakenService"),
+    addlinkService:require("./addlinkService"),
+    projectUnderTakenTeamMemberService:require("./projectUnderTakenTeamMemberService"),
+    projectUnderTakenMediaService:require("./projectUnderTakenMediaService"),
+    resumeService:require("./resumeService")
   }
