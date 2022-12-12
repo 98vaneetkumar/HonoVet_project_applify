@@ -5,18 +5,18 @@ let Response = require("../config/response");
 const Joi = require("joi");
 let config = require("../config/env")();
 let commonHelper = require("../Helper/common");
-const VolunteerExperienceProjection = ["id", "organization","role","from","to","cause","currentlyStatus","isDeleted","userId"];
+const certificationProjection = ["id", "name","attestedby","expirydate","issuedate","certificationo","isDeleted","credentialURL","userId"];
 
 module.exports = {
-  addVolExper: async (payloadData) => {
+  addcertification: async (payloadData) => {
     const schema = Joi.object().keys({
       userId: Joi.string().guid({ version: "uuidv4" }).required(),
-      organization: Joi.string().optional(),
-      role: Joi.string().optional(),
-      cause: Joi.string().optional(),
-      from:Joi.string().optional(),
-      to:Joi.string().optional(),
-      currentlyStatus: Joi.number().optional(),
+      name: Joi.string().optional(),
+      attestedby: Joi.string().optional(),
+      issuedate: Joi.string().optional(),
+      expirydate:Joi.string().optional(),
+      certificationo: Joi.string().optional(),
+      credentialURL:Joi.string().optional(),
       isDeleted:Joi.number().valid(0,1).optional()
     });
  
@@ -24,38 +24,41 @@ module.exports = {
     console.log("payload data===?",payload)
     let objToSave = {};
     if (_.has(payload, "userId") && payload.userId != "") objToSave.userId = payload.userId;
-    if (_.has(payload, "organization") && payload.organization != "") objToSave.organization = payload.organization;
-    if (_.has(payload, "role") && payload.role != "") objToSave.role = payload.role;
-    if (_.has(payload, "from") && payload.from != "") objToSave.from = payload.from;
-    if (_.has(payload, "to") && payload.to != "") objToSave.to = payload.to;
-    if (_.has(payload, "cause") && payload.cause != "") objToSave.cause = payload.cause;
-    if (_.has(payload, "currentlyStatus") && payload.currentlyStatus != "") objToSave.currentlyStatus = payload.currentlyStatus;
+    if (_.has(payload, "name") && payload.name != "") objToSave.name = payload.name;
+    if (_.has(payload, "attestedby") && payload.attestedby != "") objToSave.attestedby = payload.attestedby;
+    if (_.has(payload, "expirydate") && payload.expirydate != "") objToSave.expirydate = payload.expirydate;
+    if (_.has(payload, "issuedate") && payload.issuedate != "") objToSave.issuedate = payload. issuedate;
+    if (_.has(payload, "credentialURL") && payload.credentialURL != "") objToSave.credentialURL = payload.credentialURL;
+    if (_.has(payload, "certificationo") && payload.certificationo != "") objToSave.certificationo = payload.certificationo;
     if (_.has(payload, "isDeleted") && payload.isDeleted != "") objToSave.isDeleted = payload.isDeleted;
     
-    let addvolunteerExperience = await Service.volunteerExperService.saveData(objToSave);
-    if (addvolunteerExperience) {
+    let certification = await Service.liecenceandcertificateService.saveData(objToSave);
+    if (certification) {
       return message.success.ADDED;
     } else {
       return Response.error_msg.notAdded;
     }
   },
-  getVolExperAll :  async() => {
-    let volunteerExperience = Service.volunteerExperService.getAllUsers(VolunteerExperienceProjection);
-    if (volunteerExperience) {
-      return volunteerExperience;
+  getcertificationAll :  async() => {
+    let criteria = {
+      isDeleted:0
+    };
+    let certification = Service.liecenceandcertificateService.getAllUsers(criteria,certificationProjection);
+    if (certification) {
+      return certification;
     } else {
       throw Response.error_msg.recordNotFound
     }
   },
-  editVolExper: async (payloadData) => {
+  editcertification: async (payloadData) => {
     const schema = Joi.object().keys({
       id: Joi.string().guid({ version: "uuidv4" }).required(),
-      organization: Joi.string().optional(),
-      role: Joi.string().optional(),
-      from:Joi.string().optional(),
-      to:Joi.string().optional(),
-      cause: Joi.string().optional(),
-      currentlyStatus: Joi.number().optional(),
+      name: Joi.string().optional(),
+      attestedby: Joi.string().optional(),
+      expirydate:Joi.string().optional(),
+      issuedate: Joi.string().optional(),
+      certificationo: Joi.string().optional(),
+      credentialURL:Joi.string().optional(),
       isDeleted:Joi.number().valid(0,1).optional()
     });
  
@@ -67,19 +70,19 @@ module.exports = {
     }
     let objToSave = {};
  
-    if (_.has(payload, "organization") && payload.organization != "") objToSave.organization = payload.organization;
-    if (_.has(payload, "role") && payload.role != "") objToSave.role = payload.role;
-    if (_.has(payload, "from") && payload.from != "") objToSave.from = payload.from;
-    if (_.has(payload, "to") && payload.to != "") objToSave.to = payload.to;
-    if (_.has(payload, "cause") && payload.cause != "") objToSave.cause = payload.cause;
-    if (_.has(payload, "currentlyStatus") && payload.currentlyStatus != "") objToSave.currentlyStatus = payload.currentlyStatus;
+    if (_.has(payload, "name") && payload.name != "") objToSave.name = payload.name;
+    if (_.has(payload, "attestedby") && payload.attestedby != "") objToSave.attestedby = payload.attestedby;
+    if (_.has(payload, "expirydate") && payload.expirydate != "") objToSave.expirydate = payload.expirydate;
+    if (_.has(payload, "issuedate") && payload.issuedate != "") objToSave.issuedate = payload.issuedate;
+    if (_.has(payload, "credentialURL") && payload.credentialURL != "") objToSave.credentialURL = payload.credentialURL;
+    if (_.has(payload, "certificationo") && payload.certificationo != "") objToSave.certificationo = payload.certificationo;
     if (_.has(payload, "isDeleted") && payload.isDeleted != "") objToSave.isDeleted = payload.isDeleted;
     
-    let addvolunteerExperience = await Service.volunteerExperService.updateData(condition,objToSave);
-    if (addvolunteerExperience) {
+    let certification = await Service.liecenceandcertificateService.updateData(condition,objToSave);
+    if (certification) {
       return message.success.ADDED;
     } else {
       return Response.error_msg.notAdded;
     }
   },
-};   
+};    

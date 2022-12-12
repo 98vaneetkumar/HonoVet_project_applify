@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const sendResponse = require("../Helper/sendResponse");
-const awardandhonorsController = require("../controllers/awardandhonorsController");
+const awardandhonorsController = require("../controllers/licenceandcertificateController");
 // const authentication = require("../middleWares/authentication").verifyToken;
 const authentication =
   require("../middleWares/adminAuthentication").verifyToken;

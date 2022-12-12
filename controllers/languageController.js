@@ -32,7 +32,10 @@ module.exports = {
     }
   },
   getlanguageAll :  async() => {
-    let volunteerExperience = Service.language.getAllUsers(languageProjection);
+    let criteria = {
+      isDeleted:0
+    };
+    let volunteerExperience = Service.language.getAllUsers(criteria,languageProjection);
     if (volunteerExperience) {
       return volunteerExperience;
     } else {

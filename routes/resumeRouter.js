@@ -12,6 +12,4 @@ router.get("/get/:id",(req, res) => {
 	return sendResponse.executeMethod(resumeController.getresume, payload, req, res);
 });
 
-
-
 module.exports = router;

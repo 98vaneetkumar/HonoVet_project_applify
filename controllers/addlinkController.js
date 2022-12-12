@@ -47,7 +47,10 @@ module.exports = {
     }
   },
   getLinkAll :  async(paramData) => {
-    let link = Service.addlinkService.getAllUsers(linkProjection);
+    let criteria = {
+      isDeleted:0
+    };
+    let link = Service.addlinkService.getAllUsers(criteria,linkProjection);
     if (link) {
       return link;
     } else {

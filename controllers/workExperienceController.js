@@ -42,7 +42,11 @@ module.exports = {
     }
   },
   getExperienceAll :  async(paramData) => {
-    let experience = Service.workExperienceService.getAllUsers(EducationProjection);
+    let criteria = {
+      isDeleted:0
+    }; 
+    console.log("this is the creitera",criteria)
+    let experience = Service.workExperienceService.getAllUsers(criteria,EducationProjection);
     if (experience) {
       return experience;
     } else {

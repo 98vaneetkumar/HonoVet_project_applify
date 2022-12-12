@@ -602,7 +602,7 @@
         }
       }
     },
-    "/experince/getExperience": {
+    "/experience/getExperience": {
       "get": {
         "x-swagger-router-controller": "middleware-name1",
         "tags": ["Work Experience"],
@@ -2089,6 +2089,30 @@
             "enum": [0, 1],
             "required": "true",
             "type": "integer"
+          }
+        ],
+        "responses": {}
+      }
+    }, 
+     "/resume/get/{id}": {
+      "get": {
+        "x-swagger-router-controller": "middleware-name1",
+        "tags": ["Resume user"],
+        "description": "Get User resume",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id of media",
+            "type": "string",
+            "format": "uuid",
+            "value": "80d874f6-c488-4b1c-bb1a-946297a542a2",
+            "required": true
           }
         ],
         "responses": {}

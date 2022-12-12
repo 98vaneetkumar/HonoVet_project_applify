@@ -45,7 +45,10 @@ module.exports = {
     }
   },
   getEducationAll :  async(paramData) => {
-    let education = Service.educationService.getAllUsers(EducationProjection);
+    let criteria = {
+      isDeleted:0
+    };
+    let education = Service.educationService.getAllUsers(criteria,EducationProjection);
     if (education) {
       return education;
     } else {

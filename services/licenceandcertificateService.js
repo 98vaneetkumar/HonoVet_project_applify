@@ -113,11 +113,12 @@ exports.getAdmin = (criteria, projection) => {
 };
 
 
-exports.getAllUsers = (projection) => {
+exports.getAllUsers = (c,projection) => {
 	return new Promise((resolve, reject) => {
 		Models.certification
 			.findAndCountAll({
 				attributes: projection,
+				where:c
 			})
 			.then(result => {
 				resolve(result);

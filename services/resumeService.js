@@ -23,30 +23,28 @@ Models.profile.hasMany(Models.awardsandhonor, { foreignKey: "userId" });
 Models.profile.hasMany(Models.certification, { foreignKey: "userId" });
 Models.profile.hasMany(Models.language, { foreignKey: "userId" });
 
-exports.getAllUsers = (criteria) => {
+exports.getAllUsers = (criteria,c) => {
   return new Promise((resolve, reject) => {
     Models.profile
-      .findOne({
-        where: criteria,
+      .findOne({   
         include: [
+          { model: Models.skill , where:c},
+          { model: Models.education , where:c },
+          { model: Models.workExperience , where:c},
+          { model: Models.volunteerExperience, where:c },
           {
-            model: Models.skill,
-          },
-          { model: Models.education },
-          { model: Models.workExperience },
-          { model: Models.volunteerExperience },
-          {
-            model: Models.projectUndertaken,
+            model: Models.projectUndertaken, where:c,
             include: [
-              { model: Models.profileUndertakenTeamMember },
-              { model: Models.projectUnderTakenAddLink },
-              { model: Models.projectUndertakenProjectMedia },
+              { model: Models.profileUndertakenTeamMember , where:c},
+              { model: Models.projectUnderTakenAddLink, where:c },
+              { model: Models.projectUndertakenProjectMedia, where:c },
             ],
           },
-          { model: Models.awardsandhonor },
-          { model: Models.certification },
-          { model: Models.language },
+          { model: Models.awardsandhonor, where:c },
+          { model: Models.certification , where:c},
+          { model: Models.language, where:c },
         ],
+        where: criteria,
       })
       .then((result) => {
         resolve(result);

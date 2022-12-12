@@ -32,7 +32,10 @@ module.exports = {
     }
   },
   getteamMemberAll :  async() => {
-    let teamMember = Service.projectUnderTakenTeamMemberService.getAllUsers(teamMemberProjection);
+    let criteria = {
+      isDeleted:0
+    };
+    let teamMember = Service.projectUnderTakenTeamMemberService.getAllUsers(criteria,teamMemberProjection);
     if (teamMember) {
       return teamMember;
     } else {

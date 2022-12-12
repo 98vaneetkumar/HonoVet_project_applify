@@ -80,11 +80,12 @@ exports.getAllUser = (criteria, projection, limit, offset) => {
 	});
 };
 
-exports.getAllUsers = (projection) => {
+exports.getAllUsers = (criteria,projection) => {
 	return new Promise((resolve, reject) => {
 		Models.skill
 			.findAndCountAll({
 				attributes: projection,
+				where:criteria
 			})
 			.then(result => {
 				resolve(result);

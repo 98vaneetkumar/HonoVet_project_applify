@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const sendResponse = require("../Helper/sendResponse");
-const licenceandcertificateController = require("../controllers/licenceandcertificateController");
+const awardController = require("../controllers/awardandhonorsController");
 // const authentication = require("../middleWares/authentication").verifyToken;
 const authentication =
   require("../middleWares/adminAuthentication").verifyToken;
@@ -9,7 +9,7 @@ const authentication =
 router.post("/addawadho", (req, res) => {
   let payload = req.body;
   return sendResponse.executeMethod(
-   licenceandcertificateController.addawadho,
+   awardController.addawadho,
     payload,
     req,
     res
@@ -18,14 +18,14 @@ router.post("/addawadho", (req, res) => {
 
 router.get("/getawadho",(req, res) => {
 	let payload = req.body
-	return sendResponse.executeMethod(licenceandcertificateController.getawadhoAll, payload, req, res);
+	return sendResponse.executeMethod(awardController.getawadhoAll, payload, req, res);
 });
 
 router.put("/editawadho", (req, res) => {
   let payload = req.body;
 
   return sendResponse.executeMethod(
-   licenceandcertificateController.editawadho,
+   awardController.editawadho,
     payload,
     req,
     res
@@ -36,7 +36,7 @@ router.delete("/deleteawadho", (req, res) => {
     let payload = req.body;
   
     return sendResponse.executeMethod(
-     licenceandcertificateController.editawadho,
+     awardController.editawadho,
       payload,
       req,
       res

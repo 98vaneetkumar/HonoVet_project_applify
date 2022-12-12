@@ -55,8 +55,11 @@ module.exports = {
     }
   },
   getMediaAll: async (paramData) => {
+    let criteria = {
+      isDeleted:0
+    };
     let Media =
-      Service.projectUnderTakenMediaService.getAllUsers(MediaProjection);
+      Service.projectUnderTakenMediaService.getAllUsers(criteria,MediaProjection);
     if (Media) {
       return Media;
     } else {

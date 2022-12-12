@@ -40,7 +40,10 @@ module.exports = {
     }
   },
   getVolExperAll :  async() => {
-    let volunteerExperience = Service.volunteerExperService.getAllUsers(VolunteerExperienceProjection);
+    let criteria = {
+      isDeleted:0
+    };
+    let volunteerExperience = Service.volunteerExperService.getAllUsers(criteria,VolunteerExperienceProjection);
     if (volunteerExperience) {
       return volunteerExperience;
     } else {

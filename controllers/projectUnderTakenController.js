@@ -42,7 +42,10 @@ module.exports = {
     }
   },
   getProjectAll :  async() => {
-    let volunteerExperience = Service.projectUnderTaken.getAllUsers(projectUnderTakenProjection);
+    let criteria = {
+      isDeleted:0
+    };
+    let volunteerExperience = Service.projectUnderTaken.getAllUsers(criteria,projectUnderTakenProjection);
     if (volunteerExperience) {
       return volunteerExperience;
     } else {
@@ -78,6 +81,7 @@ module.exports = {
     if (_.has(payload, "to") && payload.to != "") objToSave.to = payload.to;
     if (_.has(payload, "currentlyOnGoing") && payload.currentlyOnGoing != "") objToSave.currentlyOnGoing = payload.currentlyOnGoing;
     if (_.has(payload, "projectDetails") && payload.projectDetails != "") objToSave.projectDetails = payload.projectDetails;
+   console.log("thisis projectundertaken",objToSave)
     let addProjectUnderTaken = await Service.projectUnderTaken.updateData(condition,objToSave);
     if (addProjectUnderTaken) {
       return message.success.ADDED;
