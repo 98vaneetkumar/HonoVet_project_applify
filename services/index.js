@@ -11,5 +11,6 @@ module.exports= {
     addlinkService:require("./addlinkService"),
     projectUnderTakenTeamMemberService:require("./projectUnderTakenTeamMemberService"),
     projectUnderTakenMediaService:require("./projectUnderTakenMediaService"),
-    resumeService:require("./resumeService")
+    resumeService:require("./resumeService"),
+    NotificationService:require("./notificationService")
   }

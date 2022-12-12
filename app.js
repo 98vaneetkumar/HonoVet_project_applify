@@ -22,6 +22,7 @@ var projectUnderTakenlink=require("./routes/addlinkRouter")
 var projectUnderTakenTeamMember=require("./routes/projectUnderTakenTeamMemberRouter")
 var projectUnderTakenMedia=require("./routes/projectUnderTakenMediaRouter")
 var resume=require("./routes/resumeRouter")
+var notification=require("./routes/notificationRouter")
 
 var __dirname = path.resolve();
 var app = express();
@@ -88,7 +89,7 @@ app.use("/projectUnderTakenlink",projectUnderTakenlink)
 app.use("/projectUnderTakenTeamMember",projectUnderTakenTeamMember)
 app.use("/projectUnderTakenMedia",projectUnderTakenMedia)
 app.use("/resume",resume)
-
+app.use("/notification",notification) 
 
 require("./dbConnection").connectDB();
 app.use((req, res, next) => {

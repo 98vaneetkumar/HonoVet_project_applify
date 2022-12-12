@@ -12,4 +12,5 @@ module.exports = {
     projectUnderTakenTeamMemberContoller:require("./projectUnderTakenTeamMemberController"),
     projectUnderTakenMediaController:require("./projectUnderTakenMediaController"),
     resumeController:require("./resumeController"),
+    notificationController:require("./notificationController")
   }

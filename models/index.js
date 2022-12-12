@@ -14,4 +14,5 @@ module.exports = {
   skill: require("./skill")(Sequelize, sequelize, Sequelize.DataTypes),
   volunteerExperience: require("./volunteerExperience")(Sequelize, sequelize, Sequelize.DataTypes),
   workExperience: require("./work_experience")(Sequelize, sequelize, Sequelize.DataTypes),
+  Notifications: require("./notificationModel")(Sequelize, sequelize, Sequelize.DataTypes),
 };

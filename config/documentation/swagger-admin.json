@@ -2117,7 +2117,264 @@
         ],
         "responses": {}
       }
-    }
+    },
+		"/notification": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"tags": [
+					"Notification"
+				],
+				"description": "Get notification",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "limit",
+						"in": "query",
+						"description": "",
+						"type": "integer",
+						"required": false,
+						"value": "100"
+					},
+					{
+						"name": "skip",
+						"in": "query",
+						"description": "",
+						"type": "integer",
+						"required": false,
+						"value": "0"
+					},
+					{
+						"name": "sortBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "orderBy",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"value": ""
+					},
+					{
+						"name": "search",
+						"in": "query",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			},
+			"post": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-notification-post",
+				"tags": [
+					"Notification"
+				],
+				"description": "Create notification",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "senderId",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"required": false,
+						"value": ""
+					},
+					{
+						"name": "receiverId",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"required": false,
+						"value": ""
+					},
+					{
+						"name": "platform",
+						"in": "formData",
+						"description": "",
+						"required": false,
+						"type": "integer",
+						"value": ""
+					},
+					{
+						"name": "notificationType",
+						"in": "formData",
+						"description": "",
+						"required": false,
+						"type": "integer",
+						"value": ""
+					},
+					{
+						"name": "title",
+						"in": "formData",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					},
+					{
+						"name": "message",
+						"in": "formData",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			},
+			"put": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-notification-put",
+				"tags": [
+					"Notification"
+				],
+				"description": "Update notification",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"required": false,
+						"value": ""
+					},
+					{
+						"name": "senderId",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"required": false,
+						"value": ""
+					},
+					{
+						"name": "receiverId",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"required": false,
+						"value": ""
+					},
+					{
+						"name": "platform",
+						"in": "formData",
+						"description": "",
+						"required": false,
+						"type": "integer",
+						"value": ""
+					},
+					{
+						"name": "notificationType",
+						"in": "formData",
+						"description": "",
+						"required": false,
+						"type": "integer",
+						"value": ""
+					},
+					{
+						"name": "title",
+						"in": "formData",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					},
+					{
+						"name": "message",
+						"in": "formData",
+						"description": "",
+						"required": false,
+						"type": "string",
+						"allowReserved": true,
+						"value": ""
+					},
+					{
+						"name": "isRead",
+						"in": "formData",
+						"description": "",
+						"required": false,
+						"enum": [0, 1],
+						"type": "integer",
+						"value": ""
+					}
+				],
+				"responses": {}
+			},
+			"delete": {
+				"x-swagger-router-controller": "middleware-name1",
+				"operationId": "api-v1-notification-delete",
+				"tags": [
+					"Notification"
+				],
+				"description": "Delete notification",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "formData",
+						"description": "",
+						"type": "string",
+						"required": false,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		},
+		"/notification/{id}": {
+			"get": {
+				"x-swagger-router-controller": "middleware-name1",
+				"tags": [
+					"Notification"
+				],
+				"description": "get notification details",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"description": "",
+						"type": "string",
+						"required": true,
+						"value": ""
+					}
+				],
+				"responses": {}
+			}
+		}
+
   },
   "definitions": {
     "skill": {
