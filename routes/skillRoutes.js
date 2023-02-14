@@ -14,8 +14,8 @@ router.get("/getSkill/:id",(req, res) => {
 	let payload = req.params
 	return sendResponse.executeMethod(skillController.getSkillById, payload, req, res);
 });
-router.get("/getSkill",(req, res) => {
-	let payload = req.params
+router.get("/getSkill",authentication,(req, res) => {
+	payload.id=credentials.id
 	return sendResponse.executeMethod(skillController.getSkillAll, payload, req, res);
 });
 

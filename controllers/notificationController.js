@@ -14,7 +14,7 @@ module.exports = {
 		});
 		let payload = await commonHelper.verifyJoiSchema(queryData, schema);
 		payload.receiverId = tokenData.id;
-		let projection = ["id", "senderId", "receiverId", "platform", "notificationType", "title", "message", "isRead", "createdAt"];
+		let projection = ["id", "senderId", "receiverId", "platform", "notificationType", "title", "message", "isRead", "createdAt","updatedAt"];
 		let list = await Services.NotificationService.listNotification(
 			payload, projection, parseInt(payload.limit, 10) || config.DEFAULTS.PAGE_LIMIT, parseInt(payload.skip, 10) || 0);
 		return list;
@@ -95,6 +95,32 @@ module.exports = {
 			}
 			await Services.NotificationService.updateData(criteria, objToSave);
 			return {};
+		} catch (err) {
+			console.log(err);
+			throw err;
+		}
+	},
+    getrecord: async(queryData) => {
+		try {
+			const schema = Joi.object().keys({
+				id: Joi.string().required(),
+                task:Joi.string().optional(),
+                startDate: Joi.number().optional(),
+                endDate: Joi.string().optional(),
+			});
+			let payload = await commonHelper.verifyJoiSchema(queryData, schema);
+			let criteria = {
+				id: payload.id
+			};
+            let tasks={
+                task:payload.task
+            }
+            console.log("This is criteria: " + criteria)
+            console.log("This is tasks: " + tasks)
+			let projection = ["id", "senderId", "receiverId", "platform", "notificationType", "title", "message", "isRead", "createdAt"];
+			let detail = await Services.NotificationService.get_weekly_tasks(criteria, projection,tasks);
+            console.log("object",detail)
+			return detail;
 		} catch (err) {
 			console.log(err);
 			throw err;

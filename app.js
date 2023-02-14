@@ -9,20 +9,20 @@ const swaggerUi = require("swagger-ui-express");
 const env = require("./config/env")();
 
 var indexRouter = require("./routes/index");
-var profileRoute = require("./routes/profileRoutes");
-var skill = require("./routes/skillRoutes");
-var education=require("./routes/educationRouter");
-var workExperience=require("./routes/workExperienceRouter")
-var volunteerExperience=require("./routes/volunteerExperRouter")
-var awardandhonour=require("./routes/awardandhonorsRouter")
-var certificate=require("./routes/licensedandcertificateRouter")
-var language=require("./routes/languageRouter")
-var projectundertaken=require("./routes/projectUnderTakenRouter")
-var projectUnderTakenlink=require("./routes/addlinkRouter")
-var projectUnderTakenTeamMember=require("./routes/projectUnderTakenTeamMemberRouter")
-var projectUnderTakenMedia=require("./routes/projectUnderTakenMediaRouter")
-var resume=require("./routes/resumeRouter")
-var notification=require("./routes/notificationRouter")
+// var profileRoute = require("./routes/profileRoutes");
+// var skill = require("./routes/skillRoutes");
+// var education=require("./routes/educationRouter");
+// var workExperience=require("./routes/workExperienceRouter")
+// var volunteerExperience=require("./routes/volunteerExperRouter")
+// var awardandhonour=require("./routes/awardandhonorsRouter")
+// var certificate=require("./routes/licensedandcertificateRouter")
+// var language=require("./routes/languageRouter")
+// var projectundertaken=require("./routes/projectUnderTakenRouter")
+// var projectUnderTakenlink=require("./routes/addlinkRouter")
+// var projectUnderTakenTeamMember=require("./routes/projectUnderTakenTeamMemberRouter")
+// var projectUnderTakenMedia=require("./routes/projectUnderTakenMediaRouter")
+// var resume=require("./routes/resumeRouter")
+// var notification=require("./routes/notificationRouter")
 
 var __dirname = path.resolve();
 var app = express();
@@ -30,6 +30,7 @@ var app = express();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
+// app.set("view engine", "ejs");
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -53,7 +54,7 @@ app.use((req, res, next) => {
   );
   next();
 });
-
+ 
 var swaggerOptions = {
   explorer: true,
   swaggerOptions: {
@@ -72,26 +73,32 @@ var swaggerOptions = {
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(null, swaggerOptions));
 app.use("/", indexRouter);
 
-app.get("/", (req, res) => {
-  res.send("Home page");
-});
+// app.get("/applify", (req, res) => {
+//   res.render("applify", {totaldata:10,userFeed:20,search:15,pushNoti:25,messuserMang:6,RatingReview:8,RewardDeal:18,payECommerce:22,CategroyFilter:23,UserGen:27,Booking:30});
+// });
+           
+ 
+//  Routes call her 
+app.use("/profile", require("./routes/profileRoutes"));
+app.use("/skill", require("./routes/skillRoutes"));
+app.use("/education", require("./routes/educationRouter"));
+app.use("/experience", require("./routes/workExperienceRouter"));
+app.use("/volunteerExperience", require("./routes/volunteerExperRouter"));
+app.use("/awardandhonour", require("./routes/awardandhonorsRouter"));
+app.use("/certificate",require("./routes/licensedandcertificateRouter"))
+app.use("/language",require("./routes/languageRouter"))
+app.use("/projectUnderTaken",require("./routes/projectUnderTakenRouter"))
+app.use("/projectUnderTakenlink",require("./routes/addlinkRouter"))
+app.use("/projectUnderTakenTeamMember",require("./routes/projectUnderTakenTeamMemberRouter"))
+app.use("/projectUnderTakenMedia",require("./routes/projectUnderTakenMediaRouter"))
+app.use("/resume",require("./routes/resumeRouter"))
+app.use("/notification",require("./routes/notificationRouter")) 
 
-app.use("/profile", profileRoute);
-app.use("/skill", skill);
-app.use("/education", education);
-app.use("/experience", workExperience);
-app.use("/volunteerExperience", volunteerExperience);
-app.use("/awardandhonour", awardandhonour);
-app.use("/certificate",certificate)
-app.use("/language",language)
-app.use("/projectUnderTaken",projectundertaken)
-app.use("/projectUnderTakenlink",projectUnderTakenlink)
-app.use("/projectUnderTakenTeamMember",projectUnderTakenTeamMember)
-app.use("/projectUnderTakenMedia",projectUnderTakenMedia)
-app.use("/resume",resume)
-app.use("/notification",notification) 
 
+
+//Database call here 
 require("./dbConnection").connectDB();
+
 app.use((req, res, next) => {
   if (req.originalUrl && req.originalUrl.split("/").pop() === "favicon.ico") {
     return res.sendStatus(204);
@@ -121,3 +128,6 @@ app.use((err, req, res) => {
   res.render("404", { baseUrl: env.APP_URLS.API_URL });
 });
 module.exports = app;
+
+
+

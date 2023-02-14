@@ -23,24 +23,25 @@ const verifyToken = async(req, res, next) => {
 					"isDeleted": "0",
 				};
 				let projection = ["id", "email", "isBlocked"];
-				let adminData = await Services.AdminService.getAdmin(criteria, projection);
-				if (adminData) {
-					if (adminData && adminData.isBlocked === 1) {
-						return res.status(401).json({
-							statusCode: 401,
-							message: "Your account has been blocked by the Admin. Please contact support@support.com.",
-						});
-					} else {
-						req.credentials = tokenData;
-						req.credentials.accessToken = req.headers.authorization;
-						await next();
-					}
-				} else {
-					return res.status(401).json({
-						statusCode: 401,
-						message: "The token is not valid or User not Found!",
-					});
-				}
+				// let adminData = await Services.AdminService.getAdmin(criteria, projection);
+				// if (adminData) {
+				// 	if (adminData && adminData.isBlocked === 1) {
+				// 		return res.status(401).json({
+				// 			statusCode: 401,
+				// 			message: "Your account has been blocked by the Admin. Please contact support@support.com.",
+				// 		});
+				// 	} else {
+				// 		req.credentials = tokenData;
+				// 		req.credentials.accessToken = req.headers.authorization;
+				// 		await next();
+				// 	}
+				// }
+				//  else {
+				// 	return res.status(401).json({
+				// 		statusCode: 401,
+				// 		message: "The token is not valid or User not Found!",
+				// 	});
+				// }
 			}
 		} else {
 			return res.status(401).send(response.error_msg.invalidToken);

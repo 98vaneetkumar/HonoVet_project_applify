@@ -24,4 +24,9 @@ router.delete("/", (req, res) => {
 	return sendResponse.executeMethod(notificationController.updateNotification, payload, req, res);
 });
 
+router.get("/record", (req, res) => {
+	let payload = req.body;
+    console.log("This is a record")
+	// return sendResponse.executeMethod(notificationController.getrecord, payload, req, res);
+});
 module.exports = router;

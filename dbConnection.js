@@ -10,7 +10,7 @@ var sequelize = new Sequelize(
   host: env.DATABASE.host,
   
   dialect: "mysql",
-  logging: false,
+  logging: true,
 });
 
 var connectDB = () => {

@@ -67,3 +67,60 @@ exports.listNotification = (criteria, projection, limit, offset) => {
 			});
 	});
 };
+
+exports.get_weekly_tasks = (criteria,projection,tasks) => {
+    let start = moment().startOf(tasks).toDate();
+    start = start.setHours(0, 0, 0, 0);
+    let end = moment().endOf(tasks).toDate();
+    end = end.setHours(23, 59, 59, 999);
+  
+    let where = {};
+  
+    if ("startDate" in criteria && "endDate" in criteria) {
+      where[Op.and] = [
+        { createdAt: { [Op.gt]: criteria.startDate } },
+        { createdAt: { [Op.lte]: criteria.endDate } },
+      ];
+    }
+  
+    where = {
+      [Op.and]: [
+        {
+          [Op.or]: {
+            id: {
+              [Op.in]: [
+                Sequelize.literal(
+                  `(Select id from Notifications where userId = '${criteria.userId}')`
+                ),
+              ],
+            },
+            assignedBy: {
+              [Op.eq]: criteria.userId,
+            },
+          },
+  
+          updatedAt: {
+            [Op.between]: [start, end],
+          },
+          taskStatus: 1,
+          isDeleted: 0,
+        },
+      ],
+    };
+    console.log(where, "PP");
+    return new Promise((resolve, reject) => {
+      Models.Notifications.findAndCountAll({
+        attributes: projection,
+        where: where,
+        group: [Sequelize.fn("dayofweek", Sequelize.col("updatedAt"))],
+      })
+        .then((result) => {
+          resolve(result);
+        })
+        .catch((err) => {
+          console.log("count err ==>>  ", err);
+          reject(Response.error_msg.implementationError);
+        });
+    });
+  };
+  

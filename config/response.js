@@ -154,7 +154,6 @@ var error_msg = {
 		statusCode: 400,
 		responseType: ""
 	},
-
 	greaterVersion: {
 		message: 	"Please Enter greater version",
 		statusCode: 400,
@@ -180,8 +179,6 @@ var error_msg = {
 		statusCode: 400,
 		responseType: ""
 	},
-
-
 };
 var sendSuccess = (data)=> {
 	let success_msg = {

@@ -23,26 +23,26 @@ Models.profile.hasMany(Models.awardsandhonor, { foreignKey: "userId" });
 Models.profile.hasMany(Models.certification, { foreignKey: "userId" });
 Models.profile.hasMany(Models.language, { foreignKey: "userId" });
 
-exports.getAllUsers = (criteria,c) => {
+exports.getAllUsers = (criteria,condition) => {
   return new Promise((resolve, reject) => {
     Models.profile
       .findOne({   
         include: [
-          { model: Models.skill , where:c},
-          { model: Models.education , where:c },
-          { model: Models.workExperience , where:c},
-          { model: Models.volunteerExperience, where:c },
+          { model: Models.skill , where:condition,required:false},
+          { model: Models.education , where:condition,required:false },
+          { model: Models.workExperience , where:condition,required:false},
+          { model: Models.volunteerExperience, where:condition,required:false },
           {
-            model: Models.projectUndertaken, where:c,
+            model: Models.projectUndertaken, where:condition,required:false,
             include: [
-              { model: Models.profileUndertakenTeamMember , where:c},
-              { model: Models.projectUnderTakenAddLink, where:c },
-              { model: Models.projectUndertakenProjectMedia, where:c },
+              { model: Models.profileUndertakenTeamMember , where:condition,required:false},
+              { model: Models.projectUnderTakenAddLink, where:condition,required:false },
+              { model: Models.projectUndertakenProjectMedia, where:condition,required:false },
             ],
           },
-          { model: Models.awardsandhonor, where:c },
-          { model: Models.certification , where:c},
-          { model: Models.language, where:c },
+          { model: Models.awardsandhonor, where:condition,required:false },
+          { model: Models.certification , where:condition,required:false},
+          { model: Models.language, where:condition ,required:false},
         ],
         where: criteria,
       })

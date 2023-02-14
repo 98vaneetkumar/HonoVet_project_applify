@@ -47,6 +47,7 @@ module.exports = {
   },
   getSkillAll :  async(paramData) => {
     let criteria = {
+      id:paramData.id,
       isDeleted:0
     };
     let skill = Service.skillService.getAllUsers(criteria,skillProjection);
